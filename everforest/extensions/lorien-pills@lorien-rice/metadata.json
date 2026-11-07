@@ -1,0 +1,7 @@
+{
+    "uuid": "lorien-pills@lorien-rice",
+    "name": "Lorien Pills",
+    "description": "Black Isle-style notches behind the left and right parts of the top bar, so the icons stay readable on light wallpapers.",
+    "shell-version": ["48", "49", "50", "51"],
+    "version": 1
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """List every wallpaper on this computer in GNOME Settings → Appearance: the images of at least 1280x720 in
-~/Pictures/Wallpapers, ~/.local/share/wallpapers, ~/.local/share/backgrounds and /usr/share/endeavouros that
+~/Pictures/Wallpapers, ~/.local/share/wallpapers, ~/.local/share/backgrounds and /usr/share/backgrounds that
 GNOME's own lists don't already show. Writes ~/.local/share/gnome-background-properties/lorien-wallpapers.xml;
 run it again after adding wallpapers."""
 import glob
@@ -11,7 +11,7 @@ import struct
 
 HOME = os.path.expanduser("~")
 ROOTS = [HOME + "/Pictures/Wallpapers", HOME + "/.local/share/wallpapers", HOME + "/.local/share/backgrounds",
-         "/usr/share/endeavouros", "/usr/share/backgrounds"]
+         "/usr/share/backgrounds"]
 EXTS = (".jpg", ".jpeg", ".png", ".webp")
 
 

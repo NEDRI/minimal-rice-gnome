@@ -1,0 +1,15 @@
+/* The left part of the top bar (menu logo, workspace dots) and the right part (system monitor, tray,
+   quick settings) get a see-through dark notch like the open Isle island in the middle: flat against the top
+   edge of the screen, rounded at the bottom. */
+#panelLeft,
+#panelRight {
+    background-color: rgba(18, 16, 14, 0.62);   /* see-through, like the open Isle island */
+    border-radius: 0 0 14px 14px;
+    margin: 0 8px;
+    padding: 0 10px;
+}
+
+/* the middle box only holds Isle, which draws its own island */
+#panelCenter {
+    background-color: transparent;
+}

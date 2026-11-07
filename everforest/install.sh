@@ -72,8 +72,8 @@ fc-cache -f "$L/fonts" >/dev/null
 say "GNOME extensions from extensions.gnome.org (GNOME $SHELL_MAJOR)"
 mkdir -p "$EXT"
 # User Themes, Dash to Dock, Blur my Shell, Just Perfection, System Monitor, Weather O'Clock, Kiwi Menu,
-# AppIndicator, Dynamic Music Pill, OSD Volume Number, Color Picker
-for pk in 19 307 3193 3843 6807 5470 8697 615 9334 5461 3396; do
+# AppIndicator, Dynamic Music Pill, OSD Volume Number, Color Picker, ArcMenu (the app list on Super+D)
+for pk in 19 307 3193 3843 6807 5470 8697 615 9334 5461 3396 3628; do
     info=$(curl -sf "https://extensions.gnome.org/extension-info/?pk=$pk&shell_version=$SHELL_MAJOR") || { echo "  ! $pk: no version for GNOME $SHELL_MAJOR"; continue; }
     read -r uuid url < <(python3 -c 'import json,sys;d=json.load(sys.stdin);print(d["uuid"],d["download_url"])' <<<"$info")
     curl -sfL "https://extensions.gnome.org$url" -o "$T/$uuid.zip"
@@ -88,6 +88,8 @@ glib-compile-schemas "$EXT/desktop-widgets@r3nhick/schemas"
 say "Lorien float (Super+H, new windows open centred with gaps)"
 rm -rf "${EXT:?}/lorien-float@lorien-rice"; cp -a "$HERE/extensions/lorien-float@lorien-rice" "$EXT/"
 glib-compile-schemas "$EXT/lorien-float@lorien-rice/schemas"
+say "Lorien pills (dark pills behind the top bar icons)"
+rm -rf "${EXT:?}/lorien-pills@lorien-rice"; cp -a "$HERE/extensions/lorien-pills@lorien-rice" "$EXT/"
 say "Kiwi Menu: white EndeavourOS logo, no blurred shadow"
 kiwi_icon=$(python3 -I "$HERE/patches/kiwimenu/apply.py" || true)
 [ -d "$EXT/isle@zickrian.github.io" ] || echo "Isle (the notch in the middle of the top bar) is not installed: get it from https://github.com/zickrian/isle"
@@ -130,5 +132,5 @@ sed "s|@HOME@|$HOME|g" "$HERE/dconf/lorien-gnome.ini" | dconf load /
 
 say "Done"
 echo "Log out and log back in: GNOME loads new extensions only at login."
-echo "Shortcuts: Super+Enter Ghostty, Super+D apps, Super+F maximize, Super+H float with gaps, Super+Q close,"
+echo "Shortcuts: Super+Enter Ghostty, Super+D app list, Super+A app grid, Super+F maximize, Super+H float with gaps, Super+Q close,"
 echo "           Super+Shift+S screenshot. Your old settings: $BACKUP"
