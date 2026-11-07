@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=TUXEDO Control Center (tray)
+Exec=/opt/tuxedo-control-center/tuxedo-control-center --tray
+Icon=tuxedo-control-center
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=5
+NoDisplay=true

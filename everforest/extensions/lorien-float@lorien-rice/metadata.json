@@ -1,0 +1,8 @@
+{
+  "uuid": "lorien-float@lorien-rice",
+  "name": "Lorien float",
+  "description": "Super+H: the window goes onto the stage (centred with gaps); pressed again, a smaller centred window. New windows open on the stage.",
+  "shell-version": ["50", "51"],
+  "settings-schema": "org.gnome.shell.extensions.lorien-float",
+  "version": 1
+}

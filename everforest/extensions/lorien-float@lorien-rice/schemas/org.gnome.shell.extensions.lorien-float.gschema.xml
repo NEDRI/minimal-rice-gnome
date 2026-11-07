@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.lorien-float" path="/org/gnome/shell/extensions/lorien-float/">
+    <key name="float-window" type="as">
+      <default><![CDATA[['<Super>h']]]></default>
+      <summary>Float the focused window in the middle with gaps</summary>
+    </key>
+    <key name="float-new-windows" type="b">
+      <default>true</default>
+      <summary>Open new windows floating in the middle with gaps</summary>
+    </key>
+    <key name="gap" type="i">
+      <default>16</default>
+      <summary>Gap from the edges of the work area, in px</summary>
+    </key>
+  </schema>
+</schemalist>

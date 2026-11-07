@@ -2,6 +2,39 @@
 
 A dark, minimal look for **KDE Plasma 6** and **GNOME** on Arch (EndeavourOS, CachyOS). The accent colour follows the wallpaper, including animated Wallpaper Engine wallpapers.
 
+## Lorien Everforest (GNOME 50/51), the current desktop
+
+Everything in [`everforest/`](everforest/), installed by one script from a GNOME session:
+
+```bash
+git clone https://github.com/NEDRI/minimal-rice.git
+cd minimal-rice/everforest
+./install.sh
+```
+
+Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. Your old GNOME settings are saved to `~/lorien-backup-<date>` first.
+
+**Look**
+- [Everforest GTK theme](https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme) (dark, green accent) for GTK 3, GTK 4/libadwaita and the GNOME Shell; [Colloid](https://github.com/vinceliuice/Colloid-icon-theme) icons with Everforest green folders; [Bibata Modern Ice](https://github.com/ful1e5/Bibata_Cursor) cursor; JetBrains Mono Nerd Font everywhere.
+- Nine wallpapers from [everforest-walls](https://github.com/Apeiros-46B/everforest-walls) in `~/Pictures/Wallpapers/everforest`; every wallpaper on the computer is listed in Settings → Appearance (`wallpapers-list.py`).
+- Top bar: the Kiwi Menu with a white EndeavourOS logo drawn on the 16 px grid, the [Isle](https://github.com/zickrian/isle) notch in the middle (installed separately), CPU and RAM, the tray (AppIndicator) and the system menu.
+- Dock at the bottom (Dash to Dock), hidden when a window covers it, with a bar under running apps and the Dynamic Music Pill.
+- App grid: everything on the first page, in folders (Internet, Programming, Electronics, Office, Multimedia, Games, System, Settings, Tools).
+- Desktop Widgets, Blur my Shell, Weather O'Clock, OSD Volume Number, Color Picker, System Monitor, Just Perfection.
+- Ghostty with the Everforest Dark Hard theme, a Starship powerline prompt in Everforest colours, and a random Pokémon with fastfetch in every new Ghostty window.
+
+**Windows and shortcuts**
+- New windows open floating in the middle with 16 px gaps (the `lorien-float` extension in this repo).
+- `Super+H`: the window goes onto that floating "stage"; pressed again, a smaller window in the middle (60 % × 70 %). Works on maximized windows too.
+- `Super+F` maximizes (and back), `Super+Q` closes, `Super+Enter` opens Ghostty, `Super+D` (or `Super+A`) opens the app grid, `Super+Shift+S` takes a screenshot, `Super+E` opens Files.
+- Window buttons on the right: minimize, maximize, close.
+
+**Coming from KDE?** [`everforest/migrate/kde-to-gnome.sh`](everforest/migrate/kde-to-gnome.sh) installs GNOME and switches the login screen to GDM; after you log in to GNOME, [`remove-kde.sh`](everforest/migrate/remove-kde.sh) saves your KDE settings and removes Plasma.
+
+**After a Kiwi Menu update** the EndeavourOS logo goes back to the default; run `python3 everforest/patches/kiwimenu/apply.py` and log in again.
+
+The rest of this README describes the earlier KDE Plasma and GNOME look (`./install.sh` in the repo root).
+
 ## What you get
 
 **KDE Plasma**
