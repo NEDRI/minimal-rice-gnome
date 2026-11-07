@@ -26,7 +26,7 @@ Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. 
 **Windows and shortcuts**
 - New windows open floating in the middle with 16 px gaps (the `lorien-float` extension in this repo).
 - `Super+H`: the window goes onto that floating "stage"; pressed again, a smaller window in the middle (60 % × 70 %). Works on maximized windows too.
-- `Super+F` maximizes (and back), `Super+Q` closes, `Super+Enter` opens Ghostty, `Super+D` (or `Super+A`) opens the app grid, `Super+Shift+S` takes a screenshot, `Super+E` opens Files.
+- `Super+F` maximizes (and back), `Super+Q` closes, `Super+Enter` opens Ghostty, `Super+D` (or `Super+A`) opens the app grid, `Super+Shift+S` takes a screenshot, `Super+E` opens a new Files window every time.
 - Window buttons on the right: minimize, maximize, close.
 
 **Coming from KDE?** [`everforest/migrate/kde-to-gnome.sh`](everforest/migrate/kde-to-gnome.sh) installs GNOME and switches the login screen to GDM; after you log in to GNOME, [`remove-kde.sh`](everforest/migrate/remove-kde.sh) saves your KDE settings and removes Plasma.
