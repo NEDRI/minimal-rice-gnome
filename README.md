@@ -1,4 +1,4 @@
-# Lorien rice
+# rice
 
 A dark, minimal look for **KDE Plasma 6** and **GNOME** on Arch (EndeavourOS, CachyOS). The accent colour follows the wallpaper, including animated Wallpaper Engine wallpapers.
 
