@@ -36,9 +36,6 @@ if $packages; then
           sassc git curl python)
     echo "pacman: ${PKGS[*]}"
     if ask "Install them?"; then sudo pacman -S --needed "${PKGS[@]}"; fi
-    if command -v yay >/dev/null && ! command -v pokemon-colorscripts >/dev/null; then
-        ask "Pokémon in the terminal (pokemon-colorscripts-git from the AUR)?" && yay -S --needed pokemon-colorscripts-git || true
-    fi
 fi
 
 # ---- 2. backup of what gets replaced ----
@@ -72,8 +69,8 @@ fc-cache -f "$L/fonts" >/dev/null
 say "GNOME extensions from extensions.gnome.org (GNOME $SHELL_MAJOR)"
 mkdir -p "$EXT"
 # User Themes, Dash to Dock, Blur my Shell, Just Perfection, System Monitor, Weather O'Clock, Kiwi Menu,
-# AppIndicator, Dynamic Music Pill, OSD Volume Number, Color Picker, ArcMenu (the app list on Super+D)
-for pk in 19 307 3193 3843 6807 5470 8697 615 9334 5461 3396 3628; do
+# AppIndicator, Dynamic Music Pill, OSD Volume Number, Color Picker, ArcMenu (the app list on Super+D), GSConnect (KDE Connect for the phone)
+for pk in 19 307 3193 3843 6807 5470 8697 615 9334 5461 3396 3628 1319; do
     info=$(curl -sf "https://extensions.gnome.org/extension-info/?pk=$pk&shell_version=$SHELL_MAJOR") || { echo "  ! $pk: no version for GNOME $SHELL_MAJOR"; continue; }
     read -r uuid url < <(python3 -c 'import json,sys;d=json.load(sys.stdin);print(d["uuid"],d["download_url"])' <<<"$info")
     curl -sfL "https://extensions.gnome.org$url" -o "$T/$uuid.zip"
@@ -92,6 +89,8 @@ say "Lorien pills (dark pills behind the top bar icons)"
 rm -rf "${EXT:?}/lorien-pills@lorien-rice"; cp -a "$HERE/extensions/lorien-pills@lorien-rice" "$EXT/"
 say "Kiwi Menu: white EndeavourOS logo, no blurred shadow"
 kiwi_icon=$(python3 -I "$HERE/patches/kiwimenu/apply.py" || true)
+say "Dynamic Music Pill: slower lyric scrolling"
+python3 -I "$HERE/patches/dynamic-music-pill/apply.py" || true
 [ -d "$EXT/isle@zickrian.github.io" ] || echo "Isle (the notch in the middle of the top bar) is not installed: get it from https://github.com/zickrian/isle"
 
 # ---- 5. wallpapers ----
@@ -105,21 +104,26 @@ for f in other/car_rain.png nature/fog_forest_1.png nature/mist_forest_1.png nat
 done
 python3 -I "$HERE/wallpapers-list.py"
 
-# ---- 6. terminal: Ghostty (Everforest) + Starship (Everforest powerline) + Pokémon ----
-say "Ghostty and Starship"
+# ---- 6. terminal: Ghostty (Everforest) + Starship (Everforest powerline) + fastfetch (distro logo) ----
+say "Ghostty, Starship and fastfetch"
 mkdir -p "$HOME/.config/ghostty"
 cp "$HERE/config/ghostty/config" "$HOME/.config/ghostty/config"
 cp "$HERE/config/starship.toml" "$HOME/.config/starship.toml"
 if [ -f "$HOME/.zshrc" ] && ! grep -q 'starship init zsh' "$HOME/.zshrc"; then
     echo 'command -v starship >/dev/null && eval "$(starship init zsh)"' >> "$HOME/.zshrc"
 fi
-if [ -f "$HOME/.zshrc" ] && ! grep -q 'pokefetch' "$HOME/.zshrc"; then
-    cat >> "$HOME/.zshrc" <<'EOF'
+mkdir -p "$HOME/.config/fastfetch"
+[ -e "$HOME/.config/fastfetch/config.jsonc" ] && cp -a "$HOME/.config/fastfetch/config.jsonc" "$BACKUP/fastfetch-config.jsonc"
+cp "$HERE/config/fastfetch/config.jsonc" "$HOME/.config/fastfetch/config.jsonc"
+if [ -f "$HOME/.zshrc" ] && ! grep -q 'fastfetch greeting' "$HOME/.zshrc"; then
+    cat >> "$HOME/.zshrc" <<'EOF2'
 
-# Pokémon + fastfetch greeting (Ghostty only, so editor terminals stay quiet)
-pokefetch() { pokemon-colorscripts -r --no-title | fastfetch --logo-type file-raw --logo - }
-[[ -o interactive && $TERM_PROGRAM == ghostty ]] && command -v pokemon-colorscripts >/dev/null && pokefetch
-EOF
+# fastfetch greeting with the distro logo (Ghostty only, so editor terminals stay quiet)
+[[ -o interactive && $TERM_PROGRAM == ghostty ]] && command -v fastfetch >/dev/null && fastfetch
+EOF2
+fi
+if command -v tidal-hifi >/dev/null || [ -d "$HOME/.config/tidal-hifi" ]; then   # TIDAL Hi-Fi: pick "Everforest" in its settings
+    mkdir -p "$HOME/.config/tidal-hifi/themes"; cp "$HERE/config/tidal-hifi/Everforest.css" "$HOME/.config/tidal-hifi/themes/"
 fi
 if [ -x /opt/tuxedo-control-center/tuxedo-control-center ]; then
     mkdir -p "$HOME/.config/autostart"; cp "$HERE/config/autostart/tuxedo-control-center-tray.desktop" "$HOME/.config/autostart/"
@@ -129,6 +133,11 @@ fi
 say "GNOME settings (theme, dock, top bar, shortcuts, app folders)"
 sed "s|@HOME@|$HOME|g" "$HERE/dconf/lorien-gnome.ini" | dconf load /
 [ -n "${kiwi_icon:-}" ] && dconf write /org/gnome/shell/extensions/kiwimenu/icon "$kiwi_icon"
+
+if systemctl is-active --quiet firewalld; then   # GSConnect / KDE Connect talks over ports 1714-1764
+    say "Firewall: open KDE Connect for the phone"
+    sudo firewall-cmd --permanent --add-service=kdeconnect && sudo firewall-cmd --reload || true
+fi
 
 say "Done"
 echo "Log out and log back in: GNOME loads new extensions only at login."

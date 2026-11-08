@@ -22,7 +22,7 @@ Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. 
 - App list on `Super+D` ([ArcMenu](https://gitlab.com/arcmenu/ArcMenu), Whisker layout in Everforest colours, centred): categories on the left, apps as a list on the right, search at the top.
 - App grid (`Super+A` or the dock button): everything on the first page, in folders (Internet, Programming, Electronics, Office, Multimedia, Games, System, Settings, Tools).
 - Desktop Widgets, Blur my Shell, Weather O'Clock, OSD Volume Number, Color Picker, System Monitor, Just Perfection.
-- Ghostty with the Everforest Dark Hard theme, a Starship powerline prompt in Everforest colours, and a random Pokémon with fastfetch in every new Ghostty window.
+- Ghostty with the Everforest Dark Hard theme, a Starship powerline prompt in Everforest colours, and fastfetch with the small distro logo and coloured icons in every new Ghostty window.
 
 **Windows and shortcuts**
 - New windows open floating in the middle with 16 px gaps (the `lorien-float` extension in this repo).

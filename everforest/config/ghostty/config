@@ -1,6 +1,8 @@
 font-family = JetBrainsMono Nerd Font
 font-size = 11
 theme = Everforest Dark Hard
+background = #1f1e1e
 window-padding-x = 10
 window-padding-y = 8
 background-opacity = 0.95
+window-theme = ghostty
