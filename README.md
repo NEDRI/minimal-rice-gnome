@@ -15,7 +15,7 @@ cd minimal-rice/everforest
 Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. Your old GNOME settings are saved to `~/lorien-backup-<date>` first.
 
 **Look**
-- [Everforest GTK theme](https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme) (dark, green accent) for GTK 3, GTK 4/libadwaita and the GNOME Shell; [Colloid](https://github.com/vinceliuice/Colloid-icon-theme) icons with Everforest green folders; [Bibata Modern Ice](https://github.com/ful1e5/Bibata_Cursor) cursor; JetBrains Mono Nerd Font everywhere.
+- Near-black windows: libadwaita and [adw-gtk3](https://github.com/lassekongo83/adw-gtk3) with darker colours (`config/gtk/gtk.css`) and the slate accent; the default GNOME Shell theme (the [Everforest GTK theme](https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme) is still built, for anyone who wants it green); [Colloid](https://github.com/vinceliuice/Colloid-icon-theme) icons with Everforest green folders; [Bibata Modern Ice](https://github.com/ful1e5/Bibata_Cursor) cursor; JetBrains Mono Nerd Font everywhere.
 - Nine wallpapers from [everforest-walls](https://github.com/Apeiros-46B/everforest-walls) in `~/Pictures/Wallpapers/everforest`; every wallpaper on the computer is listed in Settings → Appearance (`wallpapers-list.py`).
 - Top bar: see-through dark notches like the Isle island behind the left and right parts (the `lorien-pills` extension in this repo), so the icons stay readable on light wallpapers; the Kiwi Menu with a white EndeavourOS logo drawn on the 16 px grid, the [Isle](https://github.com/zickrian/isle) notch in the middle (installed separately), CPU and RAM, the tray (AppIndicator) and the system menu.
 - Dock at the bottom (Dash to Dock), hidden when a window covers it, with a bar under running apps and the Dynamic Music Pill.
@@ -29,6 +29,8 @@ Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. 
 - `Super+H`: the window goes onto that floating "stage"; pressed again, a smaller window in the middle (60 % × 70 %). Works on maximized windows too.
 - `Super+F` maximizes (and back), `Super+Q` closes, `Super+Enter` opens Ghostty, `Super+D` opens the app list, `Super+A` the app grid, `Super+Shift+S` takes a screenshot, `Super+E` opens a new Files window every time.
 - Window buttons on the right: minimize, maximize, close.
+
+**Login screen (GDM):** [`everforest/gdm-setup.sh`](everforest/gdm-setup.sh) gives it the same dark look, slate accent, 24 h clock, cursor and icons, without the distro logo (needs sudo).
 
 **Coming from KDE?** [`everforest/migrate/kde-to-gnome.sh`](everforest/migrate/kde-to-gnome.sh) installs GNOME and switches the login screen to GDM; after you log in to GNOME, [`remove-kde.sh`](everforest/migrate/remove-kde.sh) saves your KDE settings and removes Plasma.
 

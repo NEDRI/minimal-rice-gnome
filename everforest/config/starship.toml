@@ -1,7 +1,7 @@
 # Everforest powerline (w stylu presetu Catppuccin Powerline, z kolorami Everforest)
 "$schema" = 'https://starship.rs/config-schema.json'
 add_newline = true
-palette = "everforest"
+palette = "slate"
 format = """
 [](green)\
 $os\
@@ -17,6 +17,18 @@ $c$rust$golang$nodejs$python$java$kotlin\
 $time\
 [ ](fg:bg3)\
 $line_break$character"""
+
+[palettes.slate]
+bg0 = "#111112"
+bg3 = "#26282d"
+fg = "#c8d0d8"
+red = "#d0787c"
+orange = "#d69a7a"
+yellow = "#a9b6c3"
+green = "#c3ccd6"
+aqua = "#8f9fb0"
+blue = "#7a8b9d"
+purple = "#b49ac4"
 
 [palettes.everforest]
 bg0 = "#2d353b"

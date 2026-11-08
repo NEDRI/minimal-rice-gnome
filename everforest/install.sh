@@ -56,6 +56,15 @@ if $themes; then
     git clone -q --depth 1 https://github.com/vinceliuice/Colloid-icon-theme "$T/colloid"
     ( cd "$T/colloid" && ./install.sh -s everforest -t green )
 fi
+say "adw-gtk3 (dark GTK3 apps that match libadwaita) and near-black window colours"
+mkdir -p "$L/themes"
+curl -sfL https://github.com/lassekongo83/adw-gtk3/releases/download/v6.5/adw-gtk3v6.5.tar.xz -o "$T/adw.tar.xz" && tar -xf "$T/adw.tar.xz" -C "$L/themes"
+for v in 3.0 4.0; do
+    mkdir -p "$HOME/.config/gtk-$v"
+    [ -L "$HOME/.config/gtk-$v/gtk.css" ] && rm "$HOME/.config/gtk-$v/gtk.css"   # an older theme's link
+    [ -e "$HOME/.config/gtk-$v/gtk.css" ] && cp -a "$HOME/.config/gtk-$v/gtk.css" "$BACKUP/gtk-$v.css"
+    cp "$HERE/config/gtk/gtk.css" "$HOME/.config/gtk-$v/gtk.css"
+done
 say "Bibata Modern Ice cursor"
 mkdir -p "$L/icons"
 curl -sfL https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.7/Bibata-Modern-Ice.tar.xz -o "$T/bibata.tar.xz"
@@ -89,7 +98,7 @@ say "Lorien pills (dark pills behind the top bar icons)"
 rm -rf "${EXT:?}/lorien-pills@lorien-rice"; cp -a "$HERE/extensions/lorien-pills@lorien-rice" "$EXT/"
 say "Kiwi Menu: white EndeavourOS logo, no blurred shadow"
 kiwi_icon=$(python3 -I "$HERE/patches/kiwimenu/apply.py" || true)
-say "Dynamic Music Pill: slower lyric scrolling"
+say "Dynamic Music Pill: slower scrolling, hidden unless something plays"
 python3 -I "$HERE/patches/dynamic-music-pill/apply.py" || true
 [ -d "$EXT/isle@zickrian.github.io" ] || echo "Isle (the notch in the middle of the top bar) is not installed: get it from https://github.com/zickrian/isle"
 
@@ -125,6 +134,8 @@ fi
 if command -v tidal-hifi >/dev/null || [ -d "$HOME/.config/tidal-hifi" ]; then   # TIDAL Hi-Fi: pick "Everforest" in its settings
     mkdir -p "$HOME/.config/tidal-hifi/themes"; cp "$HERE/config/tidal-hifi/Everforest.css" "$HOME/.config/tidal-hifi/themes/"
 fi
+mkdir -p "$HOME/.config/systemd/user.conf.d"   # logging out waits at most 10 s for apps that ignore it
+cp "$HERE/config/systemd/user.conf.d/lorien-timeout.conf" "$HOME/.config/systemd/user.conf.d/"
 if [ -x /opt/tuxedo-control-center/tuxedo-control-center ]; then
     mkdir -p "$HOME/.config/autostart"; cp "$HERE/config/autostart/tuxedo-control-center-tray.desktop" "$HOME/.config/autostart/"
 fi
