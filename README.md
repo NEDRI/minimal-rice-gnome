@@ -1,8 +1,8 @@
-# rice
+# endri-lp-rice
 
-A dark, minimal look for **KDE Plasma 6** and **GNOME** on Arch (EndeavourOS, CachyOS). The accent colour follows the wallpaper, including animated Wallpaper Engine wallpapers.
+My desktop on a TUXEDO laptop with EndeavourOS: **GNOME 50/51**, near-black and minimal, with an island in the top bar, floating windows and a keyboard-first workflow. An older **KDE Plasma 6** version is kept further down.
 
-## Lorien Everforest (GNOME 50/51), the current desktop
+## The GNOME desktop (current)
 
 Everything in [`everforest/`](everforest/), installed by one script from a GNOME session:
 
@@ -15,26 +15,44 @@ cd minimal-rice/everforest
 Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. Your old GNOME settings are saved to `~/lorien-backup-<date>` first.
 
 **Look**
-- Near-black windows: libadwaita and [adw-gtk3](https://github.com/lassekongo83/adw-gtk3) with darker colours (`config/gtk/gtk.css`) and the slate accent; the default GNOME Shell theme (the [Everforest GTK theme](https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme) is still built, for anyone who wants it green); [Colloid](https://github.com/vinceliuice/Colloid-icon-theme) icons with Everforest green folders; [Bibata Modern Ice](https://github.com/ful1e5/Bibata_Cursor) cursor; JetBrains Mono Nerd Font everywhere.
-- Nine wallpapers from [everforest-walls](https://github.com/Apeiros-46B/everforest-walls) in `~/Pictures/Wallpapers/everforest`; every wallpaper on the computer is listed in Settings → Appearance (`wallpapers-list.py`).
-- Top bar: see-through dark notches like the Isle island behind the left and right parts (the `lorien-pills` extension in this repo), so the icons stay readable on light wallpapers; the Kiwi Menu with a white EndeavourOS logo drawn on the 16 px grid, the [Isle](https://github.com/zickrian/isle) notch in the middle (installed separately), CPU and RAM, the tray (AppIndicator) and the system menu.
-- Dock at the bottom (Dash to Dock), hidden when a window covers it, with a bar under running apps and the Dynamic Music Pill.
-- App list on `Super+D` ([ArcMenu](https://gitlab.com/arcmenu/ArcMenu), Whisker layout in Everforest colours, centred): categories on the left, apps as a list on the right, search at the top.
-- App grid (`Super+A` or the dock button): everything on the first page, in folders (Internet, Programming, Electronics, Office, Multimedia, Games, System, Settings, Tools).
-- Desktop Widgets, Blur my Shell, Weather O'Clock, OSD Volume Number, Color Picker, System Monitor, Just Perfection.
-- Ghostty with the Everforest Dark Hard theme, a Starship powerline prompt in Everforest colours, and fastfetch with the small distro logo and coloured icons in every new Ghostty window.
+- Near-black windows: libadwaita and [adw-gtk3](https://github.com/lassekongo83/adw-gtk3) (for GTK3 apps) with darker colours from [`config/gtk/gtk.css`](everforest/config/gtk/gtk.css); the default GNOME Shell theme.
+- [Colloid](https://github.com/vinceliuice/Colloid-icon-theme) icons, [Bibata Modern Ice](https://github.com/ful1e5/Bibata_Cursor) cursor, JetBrains Mono Nerd Font.
+- Windows slightly see-through over a blurred wallpaper (Blur my Shell, static blur so it does not flicker); Ghostty, Firefox, players and Steam stay opaque.
+- Wallpapers: nine from [everforest-walls](https://github.com/Apeiros-46B/everforest-walls) in `~/Pictures/Wallpapers/everforest`; every wallpaper on the computer shows up in Settings → Appearance ([`wallpapers-list.py`](everforest/wallpapers-list.py)).
+
+**Top bar**
+- The [Isle](https://github.com/zickrian/isle) island in the middle (installed separately): clock, music, notifications, calendar and more.
+- See-through dark notches behind the left and right parts (the `lorien-pills` extension in this repo), so the icons stay readable on light wallpapers.
+- Left: the Kiwi Menu with a white EndeavourOS logo drawn on the 16 px grid, and the workspace dots. Right: CPU, RAM, network, the tray and the system menu. 24 h clock.
+
+**Dock and apps**
+- Dock at the bottom (Dash to Dock), hidden when a window covers it, with a bar under running apps.
+- The Dynamic Music Pill in the dock, only while something plays: title and artist, no lyrics.
+- `Super+D`: the app list ([ArcMenu](https://gitlab.com/arcmenu/ArcMenu), Whisker layout, centred): categories on the left, apps as a list, search at the top.
+- `Super+A` or the dock button: the app grid, everything on the first page in folders (Internet, Programming, Electronics, Office, Multimedia, Games, System, Customize, Tools).
 
 **Windows and shortcuts**
 - New windows open floating in the middle with 16 px gaps (the `lorien-float` extension in this repo).
 - `Super+H`: the window goes onto that floating "stage"; pressed again, a smaller window in the middle (60 % × 70 %). Works on maximized windows too.
-- `Super+F` maximizes (and back), `Super+Q` closes, `Super+Enter` opens Ghostty, `Super+D` opens the app list, `Super+A` the app grid, `Super+Shift+S` takes a screenshot, `Super+E` opens a new Files window every time.
+- `Super+F` maximizes (and back), `Super+Q` closes, `Super+Enter` opens Ghostty, `Super+E` a new Files window every time, `Super+Shift+S` a screenshot.
 - Window buttons on the right: minimize, maximize, close.
 
-**Login screen (GDM):** [`everforest/gdm-setup.sh`](everforest/gdm-setup.sh) gives it the same dark look, slate accent, 24 h clock, cursor and icons, without the distro logo (needs sudo).
+**Terminal**
+- Ghostty on #111112 with a neutral palette, a Starship powerline prompt in slate tones, and fastfetch with the small distro logo in every new window.
+
+**Also included**
+- [GSConnect](https://github.com/GSConnect/gnome-shell-extension-gsconnect) (KDE Connect for the phone); the installer opens its ports if firewalld runs.
+- A dark theme for TIDAL Hi-Fi ([`config/tidal-hifi/Everforest.css`](everforest/config/tidal-hifi/Everforest.css)); pick it in TIDAL's settings.
+- Logging out waits at most 10 s for apps that ignore it (TUXEDO Control Center otherwise holds the next login for 90 s).
+- Desktop Widgets, Weather O'Clock, OSD Volume Number, Color Picker, System Monitor, Just Perfection.
+
+**Login screen (GDM):** [`everforest/gdm-setup.sh`](everforest/gdm-setup.sh) gives it the dark look, 24 h clock, cursor and icons, without the distro logo (needs sudo). For a wallpaper and a black top bar on the login screen, use [GDM Settings](https://github.com/gdm-settings/gdm-settings) (`yay -S gdm-settings`).
 
 **Coming from KDE?** [`everforest/migrate/kde-to-gnome.sh`](everforest/migrate/kde-to-gnome.sh) installs GNOME and switches the login screen to GDM; after you log in to GNOME, [`remove-kde.sh`](everforest/migrate/remove-kde.sh) saves your KDE settings and removes Plasma.
 
-**After a Kiwi Menu update** the EndeavourOS logo goes back to the default; run `python3 everforest/patches/kiwimenu/apply.py` and log in again.
+**After updates of Kiwi Menu or Dynamic Music Pill** my changes to them are gone; run `python3 everforest/patches/kiwimenu/apply.py` or `python3 everforest/patches/dynamic-music-pill/apply.py`, then log in again.
+
+Names like `lorien-pills`, `lorien-float` and `~/lorien-backup-*` are the folders and IDs from the project's old name; they stay so that existing installs keep working.
 
 The rest of this README describes the earlier KDE Plasma and GNOME look (`./install.sh` in the repo root).
 
@@ -59,7 +77,7 @@ The rest of this README describes the earlier KDE Plasma and GNOME look (`./inst
   - `Super+H` floats the window in the middle of the screen with even gaps (again puts it back).
 
 **GNOME**
-- Lorien Bar: a transparent top bar with black pills like the Isle island; when a menu is open, its button fills with the accent colour.
+- The bar extension (`lorien-bar`): a transparent top bar with black pills like the Isle island; when a menu is open, its button fills with the accent colour.
 - Isle (the island in the middle of the bar), Dash to Dock, ArcMenu, Vitals, Blur my Shell.
 - App folders in the app grid.
 - Smaller, dark title bars for Qt and Electron apps.
@@ -120,7 +138,7 @@ Without Wallpaper Engine everything works with a regular wallpaper, and the acce
 ./uninstall.sh
 ```
 
-Restores your settings from the newest `~/lorien-backup-*` copy and removes the Lorien files. Packages stay installed.
+Restores your settings from the newest `~/lorien-backup-*` copy and removes the files this rice installed. Packages stay installed.
 
 ## Credits
 

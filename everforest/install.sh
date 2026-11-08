@@ -1,5 +1,5 @@
 #!/bin/bash
-# Lorien Everforest: the GNOME 50/51 desktop on Arch (EndeavourOS, CachyOS), as on the screenshots in the README.
+# endri-lp-rice: the GNOME 50/51 desktop on Arch (EndeavourOS, CachyOS), as described in the README.
 # Run as your user from the GNOME session (not with sudo); sudo asks for the password for the packages.
 #   ./install.sh                  everything
 #   ./install.sh --no-packages    skip pacman/yay      --no-themes    skip building the GTK theme and icons
@@ -91,10 +91,10 @@ say "Desktop Widgets (r3nhick, from GitHub)"
 git clone -q --depth 1 https://github.com/r3nhick/desktop-widgets "$T/dw"
 rm -rf "${EXT:?}/desktop-widgets@r3nhick"; cp -a "$T/dw" "$EXT/desktop-widgets@r3nhick"; rm -rf "$EXT/desktop-widgets@r3nhick/.git"
 glib-compile-schemas "$EXT/desktop-widgets@r3nhick/schemas"
-say "Lorien float (Super+H, new windows open centred with gaps)"
+say "Floating windows (Super+H, new windows open centred with gaps)"
 rm -rf "${EXT:?}/lorien-float@lorien-rice"; cp -a "$HERE/extensions/lorien-float@lorien-rice" "$EXT/"
 glib-compile-schemas "$EXT/lorien-float@lorien-rice/schemas"
-say "Lorien pills (dark pills behind the top bar icons)"
+say "Top bar notches (dark pills behind the top bar icons)"
 rm -rf "${EXT:?}/lorien-pills@lorien-rice"; cp -a "$HERE/extensions/lorien-pills@lorien-rice" "$EXT/"
 say "Kiwi Menu: white EndeavourOS logo, no blurred shadow"
 kiwi_icon=$(python3 -I "$HERE/patches/kiwimenu/apply.py" || true)

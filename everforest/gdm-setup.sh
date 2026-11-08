@@ -1,5 +1,5 @@
 #!/bin/bash
-# Lorien: the GDM login screen like the desktop: dark, slate accent, 24 h clock, Bibata cursor,
+# endri-lp-rice: the GDM login screen like the desktop: dark, slate accent, 24 h clock, Bibata cursor,
 # Colloid icons, no distro logo, battery percentage, tap to click. Run as yourself; sudo asks for the password.
 # Undo: sudo rm /etc/dconf/db/gdm.d/99-lorien && sudo dconf update
 set -euo pipefail
