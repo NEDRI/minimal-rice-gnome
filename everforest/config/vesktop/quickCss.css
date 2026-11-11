@@ -1,0 +1,38 @@
+/* endri-lp-rice: Discord near-black (#111112) with a slate accent, like the rest of the desktop */
+.theme-dark, .visual-refresh.theme-dark, :root {
+  --background-primary: #111112;
+  --background-secondary: #0c0c0d;
+  --background-secondary-alt: #0c0c0d;
+  --background-tertiary: #080809;
+  --background-base-low: #0c0c0d;
+  --background-base-lower: #0a0a0b;
+  --background-base-lowest: #080809;
+  --background-surface-high: #18181a;
+  --background-surface-higher: #1c1c1f;
+  --background-surface-highest: #222226;
+  --background-floating: #18181a;
+  --background-mobile-primary: #111112;
+  --background-mobile-secondary: #0c0c0d;
+  --channeltextarea-background: #18181a;
+  --modal-background: #18181a;
+  --modal-footer-background: #111112;
+  --bg-base-primary: #111112;
+  --bg-base-secondary: #0c0c0d;
+  --bg-base-tertiary: #080809;
+  --bg-surface-raised: #18181a;
+  --bg-surface-overlay: #18181a;
+  --chat-background-default: #111112;
+  --background-modifier-hover: rgba(255, 255, 255, 0.05);
+  --background-modifier-selected: rgba(255, 255, 255, 0.08);
+  --background-modifier-accent: rgba(255, 255, 255, 0.06);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --text-normal: #e4e4e7;
+  --text-default: #e4e4e7;
+  --text-muted: #8e8e96;
+  --header-primary: #f2f2f2;
+  --header-secondary: #a1a1aa;
+  --text-link: #a3bad2;
+  --brand-500: #8aa4c0;
+  --brand-560: #7a93ae;
+  --control-brand-foreground: #8aa4c0;
+}

@@ -52,9 +52,12 @@ if $themes; then
     say "Everforest GTK + GNOME Shell theme (green accent, dark)"
     git clone -q --depth 1 https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme "$T/everforest"
     ( cd "$T/everforest/themes" && ./install.sh -t green -c dark -l )
-    say "Colloid icons, Everforest green folders"
-    git clone -q --depth 1 https://github.com/vinceliuice/Colloid-icon-theme "$T/colloid"
-    ( cd "$T/colloid" && ./install.sh -s everforest -t green )
+    say "Reversal icons, black variant"
+    git clone -q --depth 1 https://github.com/yeyushengfan258/Reversal-icon-theme "$T/reversal"
+    "$T/reversal/install.sh" -t black
+    for t in Reversal-black Reversal-black-dark; do   # breeze is gone without KDE: fall back to GNOME's icons
+        sed -i 's/^Inherits=hicolor,breeze$/Inherits=Adwaita,hicolor,breeze/' "$L/icons/$t/index.theme"
+    done
 fi
 say "adw-gtk3 (dark GTK3 apps that match libadwaita) and near-black window colours"
 mkdir -p "$L/themes"
@@ -132,10 +135,21 @@ if [ -f "$HOME/.zshrc" ] && ! grep -q 'fastfetch greeting' "$HOME/.zshrc"; then
 EOF2
 fi
 if command -v tidal-hifi >/dev/null || [ -d "$HOME/.config/tidal-hifi" ]; then   # TIDAL Hi-Fi: pick "Everforest" in its settings
-    mkdir -p "$HOME/.config/tidal-hifi/themes"; cp "$HERE/config/tidal-hifi/Everforest.css" "$HOME/.config/tidal-hifi/themes/"
+    mkdir -p "$HOME/.config/tidal-hifi/themes"; cp "$HERE/config/tidal-hifi/Everforest.css" "$HERE/config/tidal-hifi/Black.css" "$HOME/.config/tidal-hifi/themes/"
 fi
 mkdir -p "$HOME/.config/systemd/user.conf.d"   # logging out waits at most 10 s for apps that ignore it
 cp "$HERE/config/systemd/user.conf.d/lorien-timeout.conf" "$HOME/.config/systemd/user.conf.d/"
+V="$HOME/.var/app/dev.vencord.Vesktop/config/vesktop/settings"   # Discord (Vesktop): near-black custom CSS
+if [ -d "$V" ]; then
+    [ -s "$V/quickCss.css" ] && cp -a "$V/quickCss.css" "$BACKUP/vesktop-quickCss.css"
+    cp "$HERE/config/vesktop/quickCss.css" "$V/quickCss.css"
+    python3 -c 'import json,sys;p=sys.argv[1];d=json.load(open(p));d["useQuickCss"]=True;json.dump(d,open(p,"w"),indent=4)' "$V/settings.json" || true
+fi
+C="$HOME/.config/Code/User/settings.json"   # VS Code: near-black backgrounds on Dark Modern
+if [ -f "$C" ]; then
+    cp -a "$C" "$BACKUP/vscode-settings.json"
+    python3 -c 'import json,sys;p,c=sys.argv[1:];d=json.load(open(p));d.update(json.load(open(c)));json.dump(d,open(p,"w"),indent=4)' "$C" "$HERE/config/vscode/colors.json" || echo "  ! VS Code settings.json has comments; add config/vscode/colors.json by hand"
+fi
 if [ -x /opt/tuxedo-control-center/tuxedo-control-center ]; then
     mkdir -p "$HOME/.config/autostart"; cp "$HERE/config/autostart/tuxedo-control-center-tray.desktop" "$HOME/.config/autostart/"
 fi

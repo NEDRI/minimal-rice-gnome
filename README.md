@@ -16,7 +16,7 @@ Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. 
 
 **Look**
 - Near-black windows: libadwaita and [adw-gtk3](https://github.com/lassekongo83/adw-gtk3) (for GTK3 apps) with darker colours from [`config/gtk/gtk.css`](everforest/config/gtk/gtk.css); the default GNOME Shell theme.
-- [Colloid](https://github.com/vinceliuice/Colloid-icon-theme) icons, [Bibata Modern Ice](https://github.com/ful1e5/Bibata_Cursor) cursor, JetBrains Mono Nerd Font.
+- [Reversal](https://github.com/yeyushengfan258/Reversal-icon-theme) icons (black variant), [Bibata Modern Ice](https://github.com/ful1e5/Bibata_Cursor) cursor, JetBrains Mono Nerd Font.
 - Windows slightly see-through over a blurred wallpaper (Blur my Shell, static blur so it does not flicker); Ghostty, Firefox, players and Steam stay opaque.
 - Wallpapers: nine from [everforest-walls](https://github.com/Apeiros-46B/everforest-walls) in `~/Pictures/Wallpapers/everforest`; every wallpaper on the computer shows up in Settings → Appearance ([`wallpapers-list.py`](everforest/wallpapers-list.py)).
 
@@ -42,7 +42,7 @@ Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. 
 
 **Also included**
 - [GSConnect](https://github.com/GSConnect/gnome-shell-extension-gsconnect) (KDE Connect for the phone); the installer opens its ports if firewalld runs.
-- A dark theme for TIDAL Hi-Fi ([`config/tidal-hifi/Everforest.css`](everforest/config/tidal-hifi/Everforest.css)); pick it in TIDAL's settings.
+- The same near-black colours in other apps: TIDAL Hi-Fi ([`config/tidal-hifi/Black.css`](everforest/config/tidal-hifi/Black.css), pick "Black" in TIDAL's settings), Discord through Vesktop's custom CSS ([`config/vesktop/quickCss.css`](everforest/config/vesktop/quickCss.css)) and VS Code ([`config/vscode/colors.json`](everforest/config/vscode/colors.json), on the Dark Modern theme).
 - Logging out waits at most 10 s for apps that ignore it (TUXEDO Control Center otherwise holds the next login for 90 s).
 - Desktop Widgets, Weather O'Clock, OSD Volume Number, Color Picker, System Monitor, Just Perfection.
 

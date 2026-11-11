@@ -1,0 +1,33 @@
+{
+    "workbench.colorCustomizations": {
+        "[Dark Modern]": {
+            "editor.background": "#111112",
+            "editorGutter.background": "#111112",
+            "editorGroupHeader.tabsBackground": "#0c0c0d",
+            "tab.inactiveBackground": "#0c0c0d",
+            "tab.activeBackground": "#111112",
+            "tab.border": "#0c0c0d",
+            "editorGroup.border": "#26262a",
+            "sideBar.background": "#0c0c0d",
+            "sideBarSectionHeader.background": "#0c0c0d",
+            "activityBar.background": "#0c0c0d",
+            "statusBar.background": "#0c0c0d",
+            "statusBar.noFolderBackground": "#0c0c0d",
+            "titleBar.activeBackground": "#0c0c0d",
+            "titleBar.inactiveBackground": "#0c0c0d",
+            "panel.background": "#0c0c0d",
+            "terminal.background": "#111112",
+            "breadcrumb.background": "#111112",
+            "input.background": "#18181a",
+            "dropdown.background": "#18181a",
+            "quickInput.background": "#18181a",
+            "editorWidget.background": "#18181a",
+            "menu.background": "#18181a",
+            "notifications.background": "#18181a",
+            "focusBorder": "#8aa4c0",
+            "activityBarBadge.background": "#8aa4c0",
+            "button.background": "#4d6178",
+            "statusBarItem.remoteBackground": "#4d6178"
+        }
+    }
+}

@@ -1,0 +1,1552 @@
+/* endri-lp-rice: near-black TIDAL Hi-Fi theme (#111112, slate accent), made from the bundled Catppuccin theme */
+html {
+  --sidebar-background: #0c0c0d;
+  --sidebar-hover-background: #2e2e33;
+  --sidebar-menu-top-text: #a1a1aa;
+  --sidebar-menu-playlist-text: #a1a1aa;
+  --search-background: #0c0c0d;
+  --main-background: #111112;
+  --main-navigation-control-background: #0c0c0d;
+  --main-feed-button-background: #0c0c0d;
+  --player-control-background: #1c1c1f;
+  --player-control-active-button: #8aa4c0;
+  --player-progress-bar: #8aa4c0;
+  --indicator-hifi-background: #9db39a;
+  --indicator-hifi-span: #0c0c0d;
+  --player-control-favorite: #d0787c;
+  --search-dialog-background: #1c1c1f;
+  --right-queue-background: #0c0c0d;
+  --market-divider-fill-color: transparent;
+  --market-header-divider-color: transparent;
+  --market-core-divider-10-color: transparent;
+  --market-core-divider-20-color: transparent;
+  --market-row-normal-state-separator-color: transparent;
+  --market-row-hover-state-separator-color: transparent;
+  --market-row-hover-state-bg-color: transparent;
+  --market-row-normal-state-bg-color: transparent;
+}
+
+#sidebar {
+  background-color: #0c0c0d;
+}
+
+[class*=_sidebarWrapper_] {
+  background-color: #0c0c0d;
+}
+
+#sidebar [class*=_header_] {
+  background-color: #0c0c0d;
+}
+
+[class*=_navigationItem_] {
+  color: #a1a1aa;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+[class*=_navigationItem_]:hover {
+  background-color: #2e2e33;
+  color: #e4e4e7;
+}
+[class*=_navigationItem_][data-status=active], [class*=_navigationItem_][aria-current=page] {
+  color: #e4e4e7;
+}
+
+[class*=_contentItem_] {
+  color: #a1a1aa;
+  transition: background-color 0.15s ease;
+}
+[class*=_contentItem_]:hover {
+  background-color: #2e2e33;
+  color: #c8c8cc;
+}
+[class*=_contentItem_][data-status=active] {
+  color: #8aa4c0;
+}
+
+[class*=_collectionWrapper_] {
+  border-color: #1c1c1f;
+}
+
+[class*=_fixedNavigation_] {
+  border-color: #1c1c1f;
+}
+
+#sidebar ::-webkit-scrollbar {
+  width: 6px;
+}
+
+#sidebar ::-webkit-scrollbar-thumb {
+  background-color: #2e2e33;
+  border-radius: 3px;
+}
+
+#sidebar ::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+[class*=_actionButton_] {
+  color: #a1a1aa;
+}
+[class*=_actionButton_]:hover {
+  color: #e4e4e7;
+  background-color: #2e2e33;
+}
+
+#mainHeader {
+  background-color: #0c0c0d;
+}
+
+[data-test=header] {
+  background-color: #0c0c0d;
+}
+
+[data-test=navigation-arrows] button {
+  color: #a1a1aa;
+  background-color: #0c0c0d;
+  border-color: #1c1c1f;
+}
+[data-test=navigation-arrows] button:hover {
+  background-color: #2e2e33;
+  color: #e4e4e7;
+}
+[data-test=navigation-arrows] button:disabled {
+  color: #26262a;
+}
+
+[class*=_logo_][href="/"] {
+  color: #e4e4e7;
+}
+
+[class*=_buttonContainer_] button {
+  color: #a1a1aa;
+}
+[class*=_buttonContainer_] button:hover {
+  color: #e4e4e7;
+}
+
+[class*=_searchField_][class*=_searchField_] {
+  background-color: #0c0c0d;
+  color: #e4e4e7;
+  border-color: transparent;
+  border-radius: 8px;
+}
+[class*=_searchField_][class*=_searchField_]::placeholder {
+  color: #a1a1aa;
+}
+[class*=_searchField_][class*=_searchField_]:focus {
+  border-color: #26262a;
+  background-color: #1c1c1f;
+}
+
+input[class*=_searchField_] {
+  background-color: #0c0c0d;
+  color: #e4e4e7;
+  border-color: transparent;
+  border-radius: 8px;
+}
+input[class*=_searchField_]::placeholder {
+  color: #a1a1aa;
+}
+input[class*=_searchField_]:focus {
+  border-color: #26262a;
+  background-color: #1c1c1f;
+}
+
+[class*=_searchFieldWithPopover_] [class*=_container_] {
+  background-color: #0c0c0d;
+  border-color: transparent;
+  border-radius: 8px;
+}
+[class*=_searchFieldWithPopover_] [class*=_container_]:focus-within {
+  border-color: #26262a;
+  background-color: #1c1c1f;
+}
+
+[class*=_searchFieldFilter_] {
+  background-color: #1c1c1f;
+  color: #e4e4e7;
+  border-color: #26262a;
+}
+
+#main {
+  background-color: #111112;
+}
+
+[class*=_mainContainer_] {
+  background-color: #111112;
+}
+
+[class*=_containerRow_] {
+  background-color: #111112;
+}
+[class*=_containerRow_]:hover {
+  background-color: #111112 !important;
+}
+
+.mainContent {
+  color: #e4e4e7;
+}
+
+[class*=_headerContainer_] {
+  background-color: #111112;
+}
+
+[class*=_dataContainer_] {
+  background-color: #111112;
+}
+
+[class*=_detailContainer_] {
+  background-color: #111112;
+}
+
+[class*=_actionContainer_] button:hover {
+  background-color: #2e2e33;
+  color: #e4e4e7;
+}
+
+[id^=footerPlayer] {
+  background-color: #0c0c0d;
+}
+
+[class*=_footerPlayerWrapper_] {
+  background-color: #0c0c0d;
+}
+
+[class*=_controlWrapper_] {
+  background-color: #1c1c1f;
+}
+
+[class*=_mediaControlButtons_] button {
+  color: #a1a1aa;
+}
+[class*=_mediaControlButtons_] button:hover {
+  color: #e4e4e7;
+}
+[class*=_mediaControlButtons_] button[data-status=playing], [class*=_mediaControlButtons_] button[aria-pressed=true] {
+  color: #8aa4c0;
+}
+
+[class*=_progressBar_] [class*=_progressBarFill_] {
+  background-color: #8aa4c0;
+}
+
+[class*=_volume_] {
+  color: #a1a1aa;
+}
+[class*=_volume_]:hover {
+  color: #e4e4e7;
+}
+
+[class*=_trackListWrapper_] {
+  background-color: #111112;
+}
+
+[class*=_tracklistHeaderContainer_] {
+  background-color: #111112;
+}
+
+[class*=_trackRow_] {
+  color: #c8c8cc;
+}
+[class*=_trackRow_]:hover {
+  background-color: #2e2e33;
+  color: #e4e4e7;
+}
+[class*=_trackRow_][data-status=playing] {
+  color: #8aa4c0;
+  background-color: #6b6b72;
+}
+
+[class*=_mediaPlayerControls_] button {
+  color: #a1a1aa;
+}
+[class*=_mediaPlayerControls_] button:hover {
+  color: #e4e4e7;
+}
+[class*=_mediaPlayerControls_] button[data-status=playing] {
+  color: #8aa4c0;
+}
+
+[class*=_favoriteButton_] {
+  color: #a1a1aa;
+}
+[class*=_favoriteButton_]:hover {
+  color: #d0787c;
+}
+[class*=_favoriteButton_][data-favorite=true] {
+  color: #d0787c;
+}
+
+[class*=_feedModule_] {
+  background-color: #111112;
+}
+[class*=_feedModule_]:hover {
+  background-color: #111112 !important;
+}
+
+[class*=_cardContainer_] {
+  background-color: #111112;
+  transition: background-color 0.15s ease;
+}
+[class*=_cardContainer_]:hover {
+  background-color: #1c1c1f;
+}
+
+[class*=_feedTitle_] {
+  color: #e4e4e7;
+}
+
+[class*=_subtitle_] {
+  color: #a1a1aa;
+}
+
+[class*=_container_][class*=_header_] {
+  background-color: #111112;
+}
+
+[class*=_stickyHeader_] {
+  background-color: #111112;
+}
+
+[class*=_sectionHeader_] {
+  background-color: #111112 !important;
+}
+
+#main [class*=_header_] {
+  background-color: transparent;
+}
+
+[class*=_header_] [class*=_marketText_] {
+  color: #e4e4e7;
+}
+
+[class*=_headerColumn_] {
+  color: #a1a1aa;
+}
+
+[class*=_overline_] {
+  color: #a1a1aa;
+}
+
+[class*=_feedItem_],
+[class*=_feedCard_] {
+  background-color: #1c1c1f;
+  border-color: #1c1c1f;
+}
+
+[class*=_textContainer_] {
+  color: #e4e4e7;
+}
+
+[class*=_filter_] {
+  color: #a1a1aa;
+}
+
+a {
+  color: #8fb6b8;
+}
+a:hover {
+  color: #8aa4c0;
+}
+
+::selection {
+  background-color: #6b6b72;
+  color: #e4e4e7;
+}
+
+[class*=_queueWrapper_] {
+  background-color: #1c1c1f;
+}
+
+[class*=_modal_],
+[class*=_dialog_] {
+  background-color: #1c1c1f;
+  color: #e4e4e7;
+}
+
+[class*=_contextMenuWrapper_] {
+  background-color: #1c1c1f;
+  border-color: #26262a;
+}
+
+[class*=_contextMenuItem_] {
+  color: #c8c8cc;
+}
+[class*=_contextMenuItem_]:hover {
+  background-color: #2e2e33;
+  color: #e4e4e7;
+}
+
+#footerPlayer,
+[data-test=footer-player] {
+  background-color: #0c0c0d;
+  border-top: 1px solid #1c1c1f;
+}
+
+#footerPlayer [class*=_leftColumn_] {
+  color: #e4e4e7;
+}
+#footerPlayer [class*=_leftColumn_] a {
+  color: #e4e4e7;
+}
+#footerPlayer [class*=_leftColumn_] a:hover {
+  color: #8aa4c0;
+}
+
+[data-test=footer-track-title] a {
+  color: #e4e4e7;
+}
+[data-test=footer-track-title] a:hover {
+  color: #8aa4c0;
+}
+
+#footerPlayer [class*=_descriptionText_] a {
+  color: #c8c8cc;
+}
+#footerPlayer [class*=_descriptionText_] a:hover {
+  color: #8aa4c0;
+}
+
+[class*=_playingFrom_] {
+  color: #a1a1aa;
+}
+[class*=_playingFrom_] a {
+  color: #8aa4c0;
+}
+
+#playbackControlBar button,
+[data-test=play-controls] button {
+  color: #a1a1aa;
+  transition: color 0.15s ease;
+}
+#playbackControlBar button:hover,
+[data-test=play-controls] button:hover {
+  color: #e4e4e7;
+}
+#playbackControlBar button.withBackground[aria-checked=true],
+[data-test=play-controls] button.withBackground[aria-checked=true] {
+  background-color: #1c1c1f;
+}
+#playbackControlBar button.withBackground[aria-checked=true] path,
+[data-test=play-controls] button.withBackground[aria-checked=true] path {
+  fill: #8aa4c0;
+}
+
+[class*=_playbackButton_] button {
+  color: #e4e4e7;
+}
+
+#progressBar,
+[data-test=progress-bar] {
+  color: #8aa4c0;
+}
+
+[class*=_progressBarWrapper_] {
+  color: #8aa4c0;
+}
+
+[class*=_indicator_][class*=_fillingBlock_] {
+  background-color: #8aa4c0;
+}
+
+[data-test=footer-favorite-button][aria-checked=true] svg,
+[data-test=now-playing-favorite-button][aria-checked=true] svg {
+  color: #d0787c;
+}
+
+[data-test=now-playing],
+#nowPlaying,
+[class*=_nowPlayingContainer_] {
+  background-color: #111112 !important;
+  background-image: none !important;
+  color: #e4e4e7;
+}
+
+[class*=_innerContainer_] {
+  background-color: transparent;
+}
+
+#nowPlayingHeader,
+[data-test=header-container] {
+  background-color: transparent;
+}
+
+[class*=_playingFrom_] {
+  color: #a1a1aa;
+}
+[class*=_playingFrom_] a {
+  color: #8fb6b8;
+}
+[class*=_playingFrom_] a:hover {
+  color: #8aa4c0;
+}
+
+[class*=_baseButton_][data-test=close-now-playing],
+[class*=_baseButton_][data-test=request-fullscreen],
+[class*=_closeButton_] {
+  color: #a1a1aa;
+  background-color: transparent;
+}
+[class*=_baseButton_][data-test=close-now-playing]:hover,
+[class*=_baseButton_][data-test=request-fullscreen]:hover,
+[class*=_closeButton_]:hover {
+  color: #e4e4e7;
+  background-color: #2e2e33;
+}
+[class*=_baseButton_][data-test=close-now-playing] span,
+[class*=_baseButton_][data-test=request-fullscreen] span,
+[class*=_closeButton_] span {
+  color: #c8c8cc;
+}
+
+[class*=_leftColumn_][class*=_albumMediaQueries_],
+[class*=_leftColumn_] {
+  color: #e4e4e7;
+}
+
+.overlay[class*=_albumImageOverlay_],
+[class*=_albumImageOverlay_] {
+  color: #e4e4e7;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+[class*=_infoWrapper_] {
+  background-color: transparent;
+}
+
+[data-test=now-playing-track-title] {
+  color: #e4e4e7;
+}
+
+[class*=_artistNameColor_] {
+  color: #c8c8cc;
+}
+[class*=_artistNameColor_]:hover {
+  color: #8aa4c0;
+}
+
+[class*=_subTitleText_] {
+  color: #c8c8cc;
+}
+[class*=_subTitleText_] a {
+  color: #c8c8cc;
+}
+[class*=_subTitleText_] a:hover {
+  color: #8aa4c0;
+}
+
+[class*=_buttonsContainer_] [data-test=now-playing-favorite-button],
+[class*=_buttonsContainer_] [data-test=now-playing-context-menu] {
+  color: #a1a1aa;
+}
+[class*=_buttonsContainer_] [data-test=now-playing-favorite-button]:hover,
+[class*=_buttonsContainer_] [data-test=now-playing-context-menu]:hover {
+  color: #e4e4e7;
+  background-color: #2e2e33;
+}
+
+[class*=_tabs_][class*=_tabItems_] {
+  background-color: transparent;
+  border-color: #26262a;
+}
+
+[class*=_tabItem_] {
+  color: #a1a1aa;
+  background-color: transparent;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+[class*=_tabItem_]:hover {
+  color: #e4e4e7;
+  background-color: #2e2e33;
+}
+[class*=_tabItem_] span,
+[class*=_tabItem_] [data-wave-color] {
+  color: inherit !important;
+}
+[class*=_tabItem_] svg {
+  color: inherit;
+}
+
+[class*=_tabItem_][class*=_activeTab_] {
+  color: #e4e4e7;
+}
+
+[class*=_tabPanelStyles_] {
+  background-color: transparent;
+  color: #e4e4e7;
+}
+
+[class*=_playQueueTab_] {
+  background-color: transparent;
+}
+
+[class*=_playQueueItemsContainer_],
+[data-test=nowplaying-playqueue] {
+  background-color: transparent;
+}
+
+[class*=_stickyHeader_] {
+  background-color: #111112;
+  color: #e4e4e7;
+}
+
+[class*=_groupTitle_] {
+  color: #e4e4e7;
+  background-color: transparent;
+}
+[class*=_groupTitle_] a {
+  color: #8fb6b8;
+}
+[class*=_groupTitle_] a:hover {
+  color: #8aa4c0;
+}
+
+[class*=_clearButton_] {
+  color: #a1a1aa;
+}
+[class*=_clearButton_]:hover {
+  color: #e4e4e7;
+  background-color: #2e2e33;
+}
+
+[data-test=playqueue-item] {
+  color: #c8c8cc;
+  background-color: transparent;
+}
+[data-test=playqueue-item]:hover {
+  background-color: #2e2e33;
+}
+
+[class*=_containerPriorityHistory_] {
+  opacity: 0.6;
+}
+[class*=_containerPriorityHistory_]:hover {
+  opacity: 1;
+}
+
+[class*=_titleLink_] {
+  color: #e4e4e7;
+}
+[class*=_titleLink_]:hover {
+  color: #8aa4c0;
+}
+
+[class*=_textHigh_] {
+  color: #8aa4c0;
+}
+
+[class*=_nowPlayingIconContainer_] {
+  color: #8aa4c0;
+}
+
+[class*=_iconHigh_] {
+  color: #8aa4c0;
+}
+
+[class*=_artistText_] {
+  color: #a1a1aa;
+}
+[class*=_artistText_] a {
+  color: #a1a1aa;
+}
+[class*=_artistText_] a:hover {
+  color: #8aa4c0;
+}
+
+[class*=_titleArtistGroup_] {
+  color: #e4e4e7;
+}
+
+[class*=_actions_] button {
+  color: #a1a1aa;
+}
+[class*=_actions_] button:hover {
+  color: #e4e4e7;
+  background-color: #2e2e33;
+}
+
+[class*=_removeButton_] {
+  color: #a1a1aa;
+}
+[class*=_removeButton_]:hover {
+  color: #d0787c;
+  background-color: #2e2e33;
+}
+
+[class*=_nowPlayingCell_] {
+  background-color: transparent;
+}
+
+[class*=_bottomGradient_] {
+  background: linear-gradient(transparent, #111112);
+}
+
+[class*=_dropContainer_] {
+  background-color: transparent;
+}
+
+[class*=_suggestionsTab_] {
+  background-color: transparent;
+  color: #e4e4e7;
+}
+
+[class*=_creditsTab_] {
+  background-color: transparent;
+  color: #e4e4e7;
+}
+[class*=_creditsTab_] [class*=_divider_] {
+  background-color: #1c1c1f !important;
+}
+
+[data-test=mp-toggle-now-playing],
+[class*=_toggleButton_] {
+  color: #a1a1aa;
+}
+[data-test=mp-toggle-now-playing]:hover,
+[class*=_toggleButton_]:hover {
+  color: #e4e4e7;
+}
+
+[class*=_nowPlayingVisible_] {
+  background-color: inherit;
+}
+
+[class*=_toggleArrowIcon_] {
+  color: inherit;
+}
+
+[class*=_nowPlayingButton_] {
+  color: #a1a1aa;
+}
+[class*=_nowPlayingButton_]:hover {
+  color: #e4e4e7;
+}
+
+[data-test=playqueue-scroll]::-webkit-scrollbar {
+  width: 6px;
+}
+[data-test=playqueue-scroll]::-webkit-scrollbar-thumb {
+  background-color: #2e2e33;
+  border-radius: 3px;
+}
+[data-test=playqueue-scroll]::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.os-theme-tidal .os-scrollbar-handle {
+  background-color: #2e2e33;
+  border-radius: 3px;
+}
+.os-theme-tidal .os-scrollbar-track {
+  background-color: transparent;
+}
+
+.settings-window {
+  --black: #111112;
+  --black-lighter: #0c0c0d;
+  --black-lightest: #1c1c1f;
+  --grey-darkest: #26262a;
+  --grey-darker: #2e2e33;
+  --grey: #a1a1aa;
+  --white: #e4e4e7;
+  --tidal-blue: #8fb6b8;
+  --tidal-red: #d0787c;
+  color: #e4e4e7;
+  background: #111112;
+  overflow: hidden;
+}
+
+.settings-window__wrapper {
+  background: #111112;
+  box-shadow: inset 0 0 2px 0 #0c0c0d;
+}
+
+.settings-window__close-button:hover {
+  background: #1c1c1f;
+}
+
+.tabs__trigger + label {
+  color: #a1a1aa;
+}
+.tabs__trigger + label:hover {
+  color: #e4e4e7;
+}
+
+.tabs__trigger:checked + label {
+  color: #8aa4c0;
+}
+
+.tabs__separator {
+  border-color: #26262a;
+}
+
+.settings input:checked + label {
+  border-bottom: 2px solid #8aa4c0;
+  color: #8aa4c0;
+}
+
+.tabs__content::-webkit-scrollbar-thumb {
+  background-color: #2e2e33;
+}
+
+.group {
+  border-bottom: none;
+}
+
+.group__title {
+  color: #e4e4e7;
+}
+
+.group__option {
+  background: #1c1c1f;
+  border-color: #1c1c1f;
+}
+
+.group__options-group {
+  background: #1c1c1f;
+  border-color: #1c1c1f;
+}
+.group__options-group .group__option {
+  border-bottom-color: #26262a;
+}
+
+.group__content h4 {
+  color: #e4e4e7;
+}
+
+.group__content p,
+.group__description p {
+  color: #c8c8cc;
+}
+
+.group__description .text-input {
+  border-bottom: solid 1px #26262a;
+  color: #e4e4e7;
+}
+
+.group__description .text-input:focus {
+  border-color: #8aa4c0;
+  color: #e4e4e7;
+}
+
+.text-input {
+  background-color: #26262a;
+  color: #e4e4e7;
+  border-color: #26262a;
+}
+.text-input::placeholder {
+  color: #a1a1aa;
+}
+
+.tags__tag {
+  background: #8aa4c0;
+  color: #111112;
+}
+.tags__tag:hover, .tags__tag:focus-within {
+  background: #8aa4c0;
+}
+
+.tags__tag__text {
+  color: inherit;
+}
+
+.tags__tag__remove {
+  color: inherit;
+  opacity: 0.8;
+}
+.tags__tag__remove:hover {
+  opacity: 1;
+}
+
+.button {
+  background: #1c1c1f;
+  color: #e4e4e7;
+  border-color: #26262a;
+}
+.button:hover {
+  background: #26262a;
+}
+.button.primary {
+  background: #8aa4c0;
+  color: #111112;
+}
+.button.primary:hover {
+  background: #8aa4c0;
+}
+
+.select-input {
+  background-color: #1c1c1f;
+  color: #e4e4e7;
+  border-color: #26262a;
+}
+
+.select-input option {
+  background-color: #1c1c1f;
+}
+
+.select-input option:disabled {
+  color: #a1a1aa;
+}
+
+.hotkey-binding kbd {
+  background: #8aa4c0;
+  color: #111112;
+}
+
+.hotkey-binding.editing {
+  background: #26262a;
+}
+
+.switch {
+  border: none;
+  background-color: transparent;
+}
+
+.switch input:checked + .switch__slider {
+  background-color: #8aa4c0;
+}
+
+.switch input:checked + .switch__slider::before {
+  background-color: #111112;
+}
+
+.switch input:focus + .switch__slider {
+  box-shadow: none;
+}
+
+.switch:has(:focus-visible) {
+  outline: 2px solid #8aa4c0;
+  outline-offset: 2px;
+  border-radius: 40px;
+}
+
+.switch__slider {
+  background-color: #2e2e33;
+}
+
+.switch__slider::before {
+  background-color: #a1a1aa;
+}
+
+.textarea {
+  background: #1c1c1f;
+  color: #c8c8cc;
+  border-color: #26262a;
+}
+
+.footer__note {
+  color: #a1a1aa;
+}
+
+.footer__button {
+  color: #8fb6b8;
+}
+
+.footer__button:hover {
+  color: #9db39a;
+}
+
+.external-link {
+  color: #8fb6b8;
+}
+.external-link:hover {
+  color: #9db39a;
+}
+
+.file-msg {
+  color: #8fb6b8 !important;
+}
+
+[class*=sidebarWrapper] {
+  background-color: #0c0c0d;
+}
+
+#sidebar [class*=header_] {
+  background-color: #0c0c0d;
+}
+
+[class*=logoWrapper] {
+  background-color: #0c0c0d;
+}
+
+[class*=logoButton],
+[data-test=sidebar-logo] {
+  color: #e4e4e7;
+}
+
+[class*=versionBadge] {
+  color: #a1a1aa;
+}
+
+[class*=submenu_] {
+  background-color: #1c1c1f;
+  border-color: #26262a;
+}
+
+[class*=submenuItem] {
+  color: #a1a1aa;
+}
+[class*=submenuItem]:hover {
+  background-color: #2e2e33;
+  color: #e4e4e7;
+}
+
+[class*=collapseButton],
+[data-test=sidebar-collapse],
+[data-test=sidebar-expand] {
+  color: #a1a1aa;
+}
+[class*=collapseButton]:hover,
+[data-test=sidebar-collapse]:hover,
+[data-test=sidebar-expand]:hover {
+  color: #e4e4e7;
+  background-color: #2e2e33;
+}
+
+[data-test=shortcut-list] [class*=shortcutItem] {
+  color: #c8c8cc;
+}
+[data-test=shortcut-list] [class*=shortcutItem]:hover {
+  background-color: #2e2e33;
+}
+[data-test=shortcut-list] [class*=textWrapper] {
+  color: #c8c8cc;
+}
+
+[data-test=create-folder-or-playlist] {
+  color: #a1a1aa;
+}
+[data-test=create-folder-or-playlist]:hover {
+  color: #e4e4e7;
+  background-color: #2e2e33;
+}
+
+[class*=logo_][class*=logoVisible] {
+  color: #e4e4e7;
+}
+
+[data-test=header-profile-menu-button],
+[class*=profileMenuButton] {
+  color: #a1a1aa;
+}
+[data-test=header-profile-menu-button]:hover,
+[class*=profileMenuButton]:hover {
+  color: #e4e4e7;
+}
+
+[class*=profilePicture] {
+  border-color: #1c1c1f;
+}
+
+[class*=searchField] {
+  background-color: #0c0c0d;
+  color: #e4e4e7;
+  border-color: transparent;
+  border-radius: 8px;
+}
+[class*=searchField]::placeholder {
+  color: #a1a1aa;
+}
+[class*=searchField]:focus, [class*=searchField]:focus-within {
+  border-color: #26262a;
+  background-color: #1c1c1f;
+}
+
+[class*=searchFieldWithPopover] [class*=container] {
+  background-color: #0c0c0d;
+  border-color: transparent;
+  border-radius: 8px;
+}
+[class*=searchFieldWithPopover] [class*=container]:focus-within {
+  border-color: #26262a;
+  background-color: #1c1c1f;
+}
+
+[data-test=search-popover-container] {
+  background-color: #1c1c1f;
+}
+
+.mainContent {
+  color: #e4e4e7;
+  background-color: #111112;
+}
+
+[class*=pageHeader] {
+  background-color: #111112;
+}
+
+[class*=feed_][data-test=home-page-feed],
+[class*=feed_] {
+  background-color: #111112;
+}
+
+[data-test=spotlight-banner] [class*=slide_] {
+  background-color: #1c1c1f;
+}
+[data-test=spotlight-banner] [class*=leftSection] {
+  color: #e4e4e7;
+}
+[data-test=spotlight-banner] [class*=brandingTitle] {
+  color: #e4e4e7;
+}
+
+[class*=cardContainer],
+[class*=card_] {
+  background-color: #111112;
+  transition: background-color 0.15s ease;
+}
+[class*=cardContainer]:hover,
+[class*=card_]:hover {
+  background-color: #1c1c1f;
+}
+
+[class*=textContent] {
+  color: #e4e4e7;
+}
+
+[class*=subtitle] {
+  color: #a1a1aa;
+}
+
+[class*=description] {
+  color: #c8c8cc;
+}
+
+[class*=headerTitleContainer] {
+  color: #e4e4e7;
+}
+
+[class*=headerText] {
+  color: #e4e4e7;
+}
+
+[class*=marketText] {
+  color: inherit;
+}
+
+[data-test=view-all-link],
+[class*=viewAllButton] {
+  color: #8fb6b8;
+}
+[data-test=view-all-link]:hover,
+[class*=viewAllButton]:hover {
+  color: #8aa4c0;
+}
+
+[class*=overlay] [class*=playButton] {
+  background-color: #8aa4c0;
+  color: #111112;
+}
+
+[class*=playButtonContainer] [class*=playButtonInner] {
+  background-color: #8aa4c0;
+}
+
+[class*=headerContainer] {
+  background-color: #111112;
+}
+
+[class*=detailContainer] {
+  background-color: #111112;
+}
+
+[class*=sortButton] {
+  color: #a1a1aa;
+}
+[class*=sortButton]:hover {
+  color: #e4e4e7;
+}
+
+[class*=trackListWrapper] {
+  background-color: #111112;
+}
+
+[data-test=tracklist-row],
+[class*=trackRow_] {
+  color: #c8c8cc;
+}
+[data-test=tracklist-row]:hover,
+[class*=trackRow_]:hover {
+  background-color: #2e2e33;
+  color: #e4e4e7;
+}
+[data-test=tracklist-row][data-status=playing], [data-test=tracklist-row][data-test-is-playing=true],
+[class*=trackRow_][data-status=playing],
+[class*=trackRow_][data-test-is-playing=true] {
+  color: #8aa4c0;
+  background-color: #6b6b72;
+}
+
+[class*=album] {
+  color: #c8c8cc;
+}
+
+[class*=favoriteButton] {
+  color: #a1a1aa;
+}
+[class*=favoriteButton]:hover {
+  color: #d0787c;
+}
+[class*=favoriteButton][aria-checked=true] {
+  color: #d0787c;
+}
+
+[data-test=explicit-badge],
+[class*=explicitBadge],
+[data-test=quality-badge-LOSSLESS],
+[class*=qualityBadgeContainer] {
+  color: #a1a1aa;
+}
+
+#footerPlayer [class*=background_] {
+  background-color: #0c0c0d !important;
+}
+
+[class*=playerContent] {
+  background-color: #0c0c0d;
+}
+
+[data-test=track-info],
+[class*=trackInfo] {
+  color: #e4e4e7;
+}
+
+[class*=artworkContainer],
+[data-test=player-details-toggle-now-playing] {
+  border-color: #1c1c1f;
+}
+
+[class*=trackContent] {
+  color: #e4e4e7;
+}
+
+[class*=titleArtistStack] {
+  color: #e4e4e7;
+}
+
+[class*=titleContainer] a {
+  color: #e4e4e7;
+}
+[class*=titleContainer] a:hover {
+  color: #8aa4c0;
+}
+
+[class*=artist_] [class*=item_],
+[class*=artist_] [class*=link_] {
+  color: #c8c8cc;
+}
+[class*=artist_] [class*=item_]:hover,
+[class*=artist_] [class*=link_]:hover {
+  color: #8aa4c0;
+}
+
+[class*=playingFromText] a {
+  color: #8fb6b8;
+}
+[class*=playingFromText] a:hover {
+  color: #8aa4c0;
+}
+
+#footerPlayer [class*=actions_] button {
+  color: #a1a1aa;
+}
+#footerPlayer [class*=actions_] button:hover {
+  color: #e4e4e7;
+}
+
+[class*=blockButton] {
+  color: #a1a1aa;
+}
+[class*=blockButton]:hover {
+  color: #e4e4e7;
+}
+
+[class*=contextMenuButton] {
+  color: #a1a1aa;
+}
+[class*=contextMenuButton]:hover {
+  color: #e4e4e7;
+}
+
+[class*=centerSection] {
+  background-color: transparent;
+}
+
+#playbackControlBar button[aria-checked=true] path,
+[data-test=play-controls] button[aria-checked=true] path {
+  fill: #8aa4c0;
+}
+#playbackControlBar button.withBackground, #playbackControlBar button[class*=activeButton],
+[data-test=play-controls] button.withBackground,
+[data-test=play-controls] button[class*=activeButton] {
+  background-color: #1c1c1f;
+}
+
+[class*=shuffleButton][aria-checked=true],
+[data-test=shuffle][aria-checked=true] {
+  color: #8aa4c0;
+}
+
+[class*=repeatButton][aria-checked=true],
+[data-test=repeat][aria-checked=true] {
+  color: #8aa4c0;
+}
+
+[class*=skipButton] {
+  color: #a1a1aa;
+}
+[class*=skipButton]:hover {
+  color: #e4e4e7;
+}
+
+[class*=playbackButton],
+[data-test=play-controls] [class*=playButtonInner] {
+  color: #e4e4e7;
+  background-color: transparent;
+}
+
+[class*=scrubberRow] {
+  color: #a1a1aa;
+}
+
+[class*=scrubberBar] {
+  background-color: #2e2e33;
+}
+
+[class*=scrubberTime],
+[class*=scrubberTimeText] {
+  color: #a1a1aa;
+}
+
+[class*=fillingBlock][class*=indicator] {
+  background-color: #8aa4c0;
+}
+
+[class*=fillingBlock][class*=range] {
+  background-color: #2e2e33;
+}
+
+[class*=knob] {
+  background-color: #8aa4c0;
+}
+
+[class*=toolTip] {
+  background-color: #26262a;
+  color: #e4e4e7;
+}
+
+[class*=rightSection] {
+  color: #a1a1aa;
+}
+
+[class*=utilityContainer] {
+  color: #a1a1aa;
+}
+
+[class*=utilityButtons] button {
+  color: #a1a1aa;
+}
+[class*=utilityButtons] button:hover {
+  color: #e4e4e7;
+}
+
+[data-test=play-queue-button] {
+  color: #a1a1aa;
+  background-color: transparent !important;
+}
+[data-test=play-queue-button]:hover {
+  color: #e4e4e7;
+}
+[data-test=play-queue-button][aria-pressed=true] {
+  color: #8aa4c0;
+}
+
+[data-test=volume] {
+  color: #a1a1aa;
+}
+[data-test=volume]:hover {
+  color: #e4e4e7;
+}
+
+[class*=sliderContainer] {
+  background-color: transparent;
+}
+
+[class*=newNowPlaying] {
+  background-color: #111112 !important;
+  background-image: none !important;
+  --market-button-focus-ring-color: transparent;
+  --market-core-focus-ring-color: #8aa4c0;
+}
+
+[data-test=now-playing-similar-tracks] [class*=radioSection] [class*=card_] {
+  background-color: transparent;
+}
+[data-test=now-playing-similar-tracks] [class*=radioSection] [class*=contentContainer] {
+  color: #c8c8cc;
+}
+[data-test=now-playing-similar-tracks] [class*=radioSection] [class*=subtitle] {
+  color: #a1a1aa;
+}
+
+[data-test=now-playing-mixes-and-radio-header],
+[data-test=now-playing-mixes-and-radio-scroll] {
+  background-color: transparent !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+[data-test=now-playing-mixes-and-radio-scroll] [class*=card] {
+  background-color: transparent !important;
+}
+
+#playQueueSidebar {
+  background-color: #0c0c0d !important;
+  background: #0c0c0d !important;
+  border: none !important;
+  border-color: transparent !important;
+  border-width: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+#playQueueSidebar > * {
+  background-color: #0c0c0d !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+[class*=playQueueWrapper] {
+  background-color: #0c0c0d;
+}
+
+[data-test=playqueue-header] {
+  background-color: #0c0c0d;
+}
+[data-test=playqueue-header] [class*=headerButton] {
+  color: #a1a1aa;
+}
+[data-test=playqueue-header] [class*=headerButton]:hover {
+  color: #e4e4e7;
+}
+
+[data-test=playqueue-save-button],
+[data-test=playqueue-close-button] {
+  color: #a1a1aa;
+}
+[data-test=playqueue-save-button]:hover,
+[data-test=playqueue-close-button]:hover {
+  color: #e4e4e7;
+}
+
+[data-test=playqueue-title] {
+  color: #e4e4e7;
+}
+
+[class*=playQueueItemsContainer],
+[data-test=playqueue] {
+  background-color: transparent;
+}
+
+[class*=playQueueItems] {
+  background-color: transparent;
+}
+
+#playQueueSidebar [class*=stickyHeader] {
+  background-color: #0c0c0d;
+  color: #e4e4e7;
+}
+
+[data-test=playqueue-item] {
+  color: #c8c8cc;
+  background-color: transparent;
+  border-bottom: 1px solid #1c1c1f;
+}
+[data-test=playqueue-item]:hover {
+  background-color: #2e2e33;
+}
+[data-test=playqueue-item] img {
+  border-radius: 4px;
+}
+[data-test=playqueue-item] [class*=artist] {
+  color: #a1a1aa;
+}
+[data-test=playqueue-item] [class*=duration] {
+  color: #a1a1aa;
+}
+
+[class*=dragHandle] {
+  color: #a1a1aa;
+}
+[class*=dragHandle]:hover {
+  color: #e4e4e7;
+}
+
+[data-test=playqueue-item] [class*=more],
+[data-test=playqueue-item] [class*=menu] {
+  color: #a1a1aa;
+}
+[data-test=playqueue-item] [class*=more]:hover,
+[data-test=playqueue-item] [class*=menu]:hover {
+  color: #e4e4e7;
+}
+
+#playQueueSidebar [class*=actions_] button {
+  color: #a1a1aa;
+}
+#playQueueSidebar [class*=actions_] button:hover {
+  color: #e4e4e7;
+  background-color: #2e2e33;
+}
+
+[class*=removeButton],
+[data-test=remove-button] {
+  color: #a1a1aa;
+}
+[class*=removeButton]:hover,
+[data-test=remove-button]:hover {
+  color: #d0787c;
+  background-color: #2e2e33;
+}
+
+[class*=bottomGradient] {
+  background: linear-gradient(transparent, #0c0c0d);
+}
+
+[data-test=playqueue-scroll]::-webkit-scrollbar {
+  width: 6px;
+}
+[data-test=playqueue-scroll]::-webkit-scrollbar-thumb {
+  background-color: #2e2e33;
+  border-radius: 3px;
+}
+[data-test=playqueue-scroll]::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+[class*=notificationWrapper] {
+  background-color: #1c1c1f;
+  color: #e4e4e7;
+}
+
+[class*=marketButton][class*=primary] {
+  background-color: #8aa4c0;
+  color: #111112;
+}
+[class*=marketButton][class*=primary]:hover {
+  opacity: 0.9;
+}
+[class*=marketButton][class*=secondary] {
+  background-color: #1c1c1f;
+  color: #e4e4e7;
+  border-color: #26262a;
+}
+[class*=marketButton][class*=secondary]:hover {
+  background-color: #2e2e33;
+}
+[class*=marketButton][class*=tertiary] {
+  color: #a1a1aa;
+}
+[class*=marketButton][class*=tertiary]:hover {
+  color: #e4e4e7;
+  background-color: #2e2e33;
+}

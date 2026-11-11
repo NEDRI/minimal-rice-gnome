@@ -1,0 +1,37 @@
+/* ===== endri-lp-rice: the user button and the password field on the login screen in black ===== */
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item,
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:hover,
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:active,
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:active:hover,
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:active:focus,
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:selected,
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:focus,
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:selected:hover,
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:focus:hover {
+  background-color: rgba(0, 0, 0, 0.82) !important;
+  color: #f2f2f2 !important;
+}
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:hover,
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:focus:hover,
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:selected:hover {
+  background-color: rgba(24, 24, 26, 0.9) !important;
+}
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item .user-icon {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #f2f2f2 !important;
+}
+
+.login-dialog .login-dialog-prompt-entry,
+.login-dialog .login-dialog-prompt-entry:hover,
+.login-dialog .login-dialog-prompt-entry:focus,
+.login-dialog .login-dialog-prompt-entry:insensitive,
+.unlock-dialog .login-dialog-prompt-entry,
+.unlock-dialog .login-dialog-prompt-entry:hover,
+.unlock-dialog .login-dialog-prompt-entry:focus {
+  background-color: rgba(0, 0, 0, 0.82) !important;
+  color: #f2f2f2 !important;
+}
+.login-dialog .login-dialog-prompt-entry StLabel.hint-text,
+.unlock-dialog .login-dialog-prompt-entry StLabel.hint-text {
+  color: rgba(255, 255, 255, 0.5) !important;
+}

@@ -6,7 +6,7 @@ set -euo pipefail
 [ "$(id -u)" -ne 0 ] || { echo "Run it without sudo."; exit 1; }
 
 echo "== 1/3 Cursor and icons for the login screen (copied to /usr/share/icons)"
-for t in Bibata-Modern-Ice Colloid Colloid-Dark Colloid-Green-Everforest-Dark Colloid-Green-Everforest; do   # the Everforest ones link into Colloid(-Dark)
+for t in Bibata-Modern-Ice Reversal-black Reversal-black-dark; do   # -dark links into Reversal-black
     [ -d "$HOME/.local/share/icons/$t" ] && sudo cp -a --no-preserve=ownership "$HOME/.local/share/icons/$t" /usr/share/icons/ && echo "   $t"
 done
 
@@ -21,7 +21,7 @@ accent-color='slate'
 clock-format='24h'
 cursor-theme='Bibata-Modern-Ice'
 cursor-size=24
-icon-theme='Colloid-Green-Everforest-Dark'
+icon-theme='Reversal-black-dark'
 show-battery-percentage=true
 font-name='Adwaita Sans 11'
 
