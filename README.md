@@ -18,7 +18,7 @@ Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. 
 - Near-black windows: libadwaita and [adw-gtk3](https://github.com/lassekongo83/adw-gtk3) (for GTK3 apps) with darker colours from [`config/gtk/gtk.css`](everforest/config/gtk/gtk.css); the default GNOME Shell theme.
 - [Reversal](https://github.com/yeyushengfan258/Reversal-icon-theme) icons (black variant), [Bibata Modern Ice](https://github.com/ful1e5/Bibata_Cursor) cursor, JetBrains Mono Nerd Font.
 - Windows slightly see-through over a blurred wallpaper (Blur my Shell, static blur so it does not flicker); Ghostty, Firefox, players and Steam stay opaque.
-- Wallpapers: nine from [everforest-walls](https://github.com/Apeiros-46B/everforest-walls) in `~/Pictures/Wallpapers/everforest`; every wallpaper on the computer shows up in Settings → Appearance ([`wallpapers-list.py`](everforest/wallpapers-list.py)).
+- Wallpapers: nine from [everforest-walls](https://github.com/Apeiros-46B/everforest-walls) in `~/Pictures/Wallpapers/everforest` and eight from Wallhaven in `~/Pictures/Wallpapers/wallhaven`; the desktop uses GNOME's own dark "Tubes"; every wallpaper on the computer shows up in Settings → Appearance ([`wallpapers-list.py`](everforest/wallpapers-list.py)).
 
 **Top bar**
 - The [Isle](https://github.com/zickrian/isle) island in the middle (installed separately): clock, music, notifications, calendar and more.
@@ -42,11 +42,13 @@ Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. 
 
 **Also included**
 - [GSConnect](https://github.com/GSConnect/gnome-shell-extension-gsconnect) (KDE Connect for the phone); the installer opens its ports if firewalld runs.
-- The same near-black colours in other apps: TIDAL Hi-Fi ([`config/tidal-hifi/Black.css`](everforest/config/tidal-hifi/Black.css), pick "Black" in TIDAL's settings), Discord through Vesktop's custom CSS ([`config/vesktop/quickCss.css`](everforest/config/vesktop/quickCss.css)) and VS Code ([`config/vscode/colors.json`](everforest/config/vscode/colors.json), on the Dark Modern theme).
+- The same near-black colours in other apps: TIDAL Hi-Fi ([`config/tidal-hifi/Black.css`](everforest/config/tidal-hifi/Black.css), pick "Black" in TIDAL's settings), Discord through Vesktop's custom CSS ([`config/vesktop/quickCss.css`](everforest/config/vesktop/quickCss.css)) VS Code ([`config/vscode/colors.json`](everforest/config/vscode/colors.json): Dark Modern with near-black backgrounds, brighter syntax colours and the Cascadia Code font) and Spotify through [Spicetify](https://spicetify.app) ([`config/spicetify/endri`](everforest/config/spicetify/endri); after a Spotify update run `spicetify backup apply`, after changing the theme `spicetify apply`).
 - Logging out waits at most 10 s for apps that ignore it (TUXEDO Control Center otherwise holds the next login for 90 s).
 - Desktop Widgets, Weather O'Clock, OSD Volume Number, Color Picker, System Monitor, Just Perfection.
 
-**Login screen (GDM):** [`everforest/gdm-setup.sh`](everforest/gdm-setup.sh) gives it the dark look, 24 h clock, cursor and icons, without the distro logo (needs sudo). For a wallpaper and a black top bar on the login screen, use [GDM Settings](https://github.com/gdm-settings/gdm-settings) (`yay -S gdm-settings`).
+**Spotify and TIDAL launchers** ([`config/applications/`](everforest/config/applications/)): Spotify gets its icon in the dock on Wayland, TIDAL a dark title bar.
+
+**Login screen (GDM):** [`everforest/gdm-setup.sh`](everforest/gdm-setup.sh) gives it the dark look, 24 h clock, cursor and icons, without the distro logo (needs sudo). For the wallpaper, the black top bar and black login fields, use [GDM Settings](https://github.com/gdm-settings/gdm-settings) (`yay -S gdm-settings`): the installer fills in its settings, run [`gdm-theme/build.sh`](everforest/gdm-theme/build.sh), then open GDM Settings and press Apply.
 
 **Coming from KDE?** [`everforest/migrate/kde-to-gnome.sh`](everforest/migrate/kde-to-gnome.sh) installs GNOME and switches the login screen to GDM; after you log in to GNOME, [`remove-kde.sh`](everforest/migrate/remove-kde.sh) saves your KDE settings and removes Plasma.
 

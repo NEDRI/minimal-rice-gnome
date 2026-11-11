@@ -1,0 +1,3 @@
+/* endri-lp-rice: small touches on top of color.ini */
+.Root__top-container { background-color: var(--spice-main); }
+.main-nowPlayingBar-container, .Root__now-playing-bar { background-color: var(--spice-player) !important; }

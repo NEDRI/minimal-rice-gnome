@@ -75,6 +75,11 @@ tar -xf "$T/bibata.tar.xz" -C "$L/icons"
 say "Homenaje (the desktop clock font)"
 mkdir -p "$L/fonts"
 curl -sfL https://raw.githubusercontent.com/google/fonts/main/ofl/homenaje/Homenaje-Regular.ttf -o "$L/fonts/Homenaje-Regular.ttf"
+say "Cascadia Code (the VS Code font)"
+mkdir -p "$L/fonts/CascadiaCode"
+B=https://raw.githubusercontent.com/google/fonts/main/ofl/cascadiacode
+curl -sfL "$B/CascadiaCode%5Bwght%5D.ttf" -o "$L/fonts/CascadiaCode/CascadiaCode[wght].ttf" || true
+curl -sfL "$B/CascadiaCode-Italic%5Bwght%5D.ttf" -o "$L/fonts/CascadiaCode/CascadiaCode-Italic[wght].ttf" || true
 fc-cache -f "$L/fonts" >/dev/null
 
 # ---- 4. GNOME extensions ----
@@ -114,6 +119,20 @@ for f in other/car_rain.png nature/fog_forest_1.png nature/mist_forest_1.png nat
          other/japanese_street_shop.png; do
     [ -e "$W/$(basename "$f")" ] || curl -sfL "$base/$f" -o "$W/$(basename "$f")" || echo "  ! $f"
 done
+say "Eight more wallpapers from Wallhaven -> ~/Pictures/Wallpapers/wallhaven"
+WH="$HOME/Pictures/Wallpapers/wallhaven"; mkdir -p "$WH"
+while read -r name file; do
+    [ -e "$WH/$name.${file##*.}" ] || curl -sfL "https://w.wallhaven.cc/full/${file:0:2}/wallhaven-$file" -o "$WH/$name.${file##*.}" || echo "  ! $name"
+done <<'LIST'
+alpine_lake_village 1qqwq3.jpg
+fuji_cherry_blossom 5ymyz7.jpg
+green_lake_castle 6lwr2x.jpg
+foggy_grass 8g8q32.jpg
+japanese_gate_night d8wvxo.jpg
+cabin_dark_forest ogyeol.jpg
+japanese_village_autumn yqvj5g.jpg
+boat_red_fog zpoxyj.png
+LIST
 python3 -I "$HERE/wallpapers-list.py"
 
 # ---- 6. terminal: Ghostty (Everforest) + Starship (Everforest powerline) + fastfetch (distro logo) ----
@@ -145,11 +164,18 @@ if [ -d "$V" ]; then
     cp "$HERE/config/vesktop/quickCss.css" "$V/quickCss.css"
     python3 -c 'import json,sys;p=sys.argv[1];d=json.load(open(p));d["useQuickCss"]=True;json.dump(d,open(p,"w"),indent=4)' "$V/settings.json" || true
 fi
-C="$HOME/.config/Code/User/settings.json"   # VS Code: near-black backgrounds on Dark Modern
+C="$HOME/.config/Code/User/settings.json"   # VS Code: near-black backgrounds, brighter syntax colours, Cascadia Code
 if [ -f "$C" ]; then
     cp -a "$C" "$BACKUP/vscode-settings.json"
     python3 -c 'import json,sys;p,c=sys.argv[1:];d=json.load(open(p));d.update(json.load(open(c)));json.dump(d,open(p,"w"),indent=4)' "$C" "$HERE/config/vscode/colors.json" || echo "  ! VS Code settings.json has comments; add config/vscode/colors.json by hand"
 fi
+if command -v spicetify >/dev/null; then   # Spotify (through Spicetify): the near-black "endri" theme
+    mkdir -p "$HOME/.config/spicetify/Themes"; cp -r "$HERE/config/spicetify/endri" "$HOME/.config/spicetify/Themes/"
+    spicetify config current_theme endri color_scheme Base >/dev/null && spicetify backup apply >/dev/null 2>&1 || echo "  ! spicetify apply failed; run it again with Spotify closed"
+fi
+mkdir -p "$HOME/.local/share/applications"   # Spotify: the right icon in the dock on Wayland; TIDAL: dark title bar
+command -v spotify-launcher >/dev/null && cp "$HERE/config/applications/spotify-launcher.desktop" "$HOME/.local/share/applications/"
+command -v tidal-hifi >/dev/null && cp "$HERE/config/applications/tidal-hifi.desktop" "$HOME/.local/share/applications/"
 if [ -x /opt/tuxedo-control-center/tuxedo-control-center ]; then
     mkdir -p "$HOME/.config/autostart"; cp "$HERE/config/autostart/tuxedo-control-center-tray.desktop" "$HOME/.config/autostart/"
 fi
@@ -163,6 +189,8 @@ if systemctl is-active --quiet firewalld; then   # GSConnect / KDE Connect talks
     say "Firewall: open KDE Connect for the phone"
     sudo firewall-cmd --permanent --add-service=kdeconnect && sudo firewall-cmd --reload || true
 fi
+
+command -v gdm-settings >/dev/null && bash "$HERE/gdm-theme/build.sh" >/dev/null   # login theme for GDM Settings (press Apply there)
 
 say "Done"
 echo "Log out and log back in: GNOME loads new extensions only at login."

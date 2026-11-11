@@ -1,0 +1,14 @@
+[Desktop Entry]
+Categories=Audio;Music;Player;Network;AudioVideo
+Comment=Web version of Tidal running in Electron with Hi-Fi support thanks to Widevine
+Exec=env GTK_THEME=adw-gtk3-dark tidal-hifi
+GenericName=Music Player
+Icon=tidal-hifi
+MimeType=x-scheme-handler/tidal
+Name=TIDAL Hi-Fi
+StartupNotify=true
+StartupWMClass=tidal-hifi
+Terminal=false
+Type=Application
+Version=1.5
+X-PulseAudio-Properties=media.role=music

@@ -36,3 +36,16 @@
   --brand-560: #7a93ae;
   --control-brand-foreground: #8aa4c0;
 }
+
+/* buttons and toggles: slate instead of Discord's blurple */
+.theme-dark, .visual-refresh.theme-dark, :root {
+  --brand-experiment: #8aa4c0;
+  --brand-experiment-500: #8aa4c0;
+  --brand-experiment-560: #7a93ae;
+  --brand-experiment-600: #6c849e;
+  --button-filled-brand-background: #4d6178;
+  --button-filled-brand-background-hover: #5a6f88;
+  --button-filled-brand-background-active: #435568;
+  --button-filled-brand-text: #f2f2f2;
+  --control-brand-foreground-new: #8aa4c0;
+}
