@@ -13,3 +13,10 @@
 #panelCenter {
     background-color: transparent;
 }
+
+/* Multi Monitor Bar: the bar on the other monitors is solid black (its panel-color), where the
+   notches would only show as lighter boxes; there the whole bar is one black strip. */
+.multimonitor-panel #panelLeft,
+.multimonitor-panel #panelRight {
+    background-color: transparent;
+}

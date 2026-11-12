@@ -24,7 +24,7 @@ Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. 
 - The [Isle](https://github.com/zickrian/isle) island in the middle (installed separately): clock, music, notifications, calendar and more.
 - See-through dark notches behind the left and right parts (the `lorien-pills` extension in this repo), so the icons stay readable on light wallpapers.
 - Left: the Kiwi Menu with a white EndeavourOS logo drawn on the 16 px grid, and the workspace dots. Right: CPU, RAM, network, the tray and the system menu. 24 h clock.
-- With a second monitor: the same bar there too ([Multi Monitor Bar](https://extensions.gnome.org/extension/8773/), patched by [`patches/multi-monitors-bar`](everforest/patches/multi-monitors-bar/apply.py) so the workspace dots stay next to ArcMenu and System Monitor values are not cut).
+- With a second monitor: the same bar there too ([Multi Monitor Bar](https://extensions.gnome.org/extension/8773/), patched by [`patches/multi-monitors-bar`](everforest/patches/multi-monitors-bar/apply.py) so the workspace dots stay next to ArcMenu and System Monitor values are not cut). There it is solid black, without the tray icons, and Isle's island takes the bar's sizes ([`patches/isle`](everforest/patches/isle/apply.py)).
 
 **Dock and apps**
 - Dock at the bottom (Dash to Dock), hidden when a window covers it, with a bar under running apps.

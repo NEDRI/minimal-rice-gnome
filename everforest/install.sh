@@ -111,6 +111,8 @@ say "Dynamic Music Pill: slower scrolling, hidden unless something plays"
 python3 -I "$HERE/patches/dynamic-music-pill/apply.py" || true
 say "Multi Monitor Bar: workspace dots next to ArcMenu, uncut System Monitor values"
 python3 -I "$HERE/patches/multi-monitors-bar/apply.py" || true
+say "Isle: its copy on the other monitors sized like the bar (15 px clock)"
+python3 -I "$HERE/patches/isle/apply.py" || true
 [ -d "$EXT/isle@zickrian.github.io" ] || echo "Isle (the notch in the middle of the top bar) is not installed: get it from https://github.com/zickrian/isle"
 
 # ---- 5. wallpapers ----
