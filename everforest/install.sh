@@ -86,8 +86,9 @@ fc-cache -f "$L/fonts" >/dev/null
 say "GNOME extensions from extensions.gnome.org (GNOME $SHELL_MAJOR)"
 mkdir -p "$EXT"
 # User Themes, Dash to Dock, Blur my Shell, Just Perfection, System Monitor, Weather O'Clock, Kiwi Menu,
-# AppIndicator, Dynamic Music Pill, OSD Volume Number, Color Picker, ArcMenu (the app list on Super+D), GSConnect (KDE Connect for the phone)
-for pk in 19 307 3193 3843 6807 5470 8697 615 9334 5461 3396 3628 1319; do
+# AppIndicator, Dynamic Music Pill, OSD Volume Number, Color Picker, ArcMenu (the app list on Super+D), GSConnect (KDE Connect for the phone),
+# Multi Monitor Bar (the top bar on the other monitors too)
+for pk in 19 307 3193 3843 6807 5470 8697 615 9334 5461 3396 3628 1319 8773; do
     info=$(curl -sf "https://extensions.gnome.org/extension-info/?pk=$pk&shell_version=$SHELL_MAJOR") || { echo "  ! $pk: no version for GNOME $SHELL_MAJOR"; continue; }
     read -r uuid url < <(python3 -c 'import json,sys;d=json.load(sys.stdin);print(d["uuid"],d["download_url"])' <<<"$info")
     curl -sfL "https://extensions.gnome.org$url" -o "$T/$uuid.zip"
@@ -108,6 +109,8 @@ say "Kiwi Menu: white EndeavourOS logo, no blurred shadow"
 kiwi_icon=$(python3 -I "$HERE/patches/kiwimenu/apply.py" || true)
 say "Dynamic Music Pill: slower scrolling, hidden unless something plays"
 python3 -I "$HERE/patches/dynamic-music-pill/apply.py" || true
+say "Multi Monitor Bar: workspace dots next to ArcMenu, uncut System Monitor values"
+python3 -I "$HERE/patches/multi-monitors-bar/apply.py" || true
 [ -d "$EXT/isle@zickrian.github.io" ] || echo "Isle (the notch in the middle of the top bar) is not installed: get it from https://github.com/zickrian/isle"
 
 # ---- 5. wallpapers ----

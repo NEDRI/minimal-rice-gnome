@@ -24,6 +24,7 @@ Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. 
 - The [Isle](https://github.com/zickrian/isle) island in the middle (installed separately): clock, music, notifications, calendar and more.
 - See-through dark notches behind the left and right parts (the `lorien-pills` extension in this repo), so the icons stay readable on light wallpapers.
 - Left: the Kiwi Menu with a white EndeavourOS logo drawn on the 16 px grid, and the workspace dots. Right: CPU, RAM, network, the tray and the system menu. 24 h clock.
+- With a second monitor: the same bar there too ([Multi Monitor Bar](https://extensions.gnome.org/extension/8773/), patched by [`patches/multi-monitors-bar`](everforest/patches/multi-monitors-bar/apply.py) so the workspace dots stay next to ArcMenu and System Monitor values are not cut).
 
 **Dock and apps**
 - Dock at the bottom (Dash to Dock), hidden when a window covers it, with a bar under running apps.
@@ -33,7 +34,7 @@ Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. 
 
 **Windows and shortcuts**
 - New windows open floating in the middle with 16 px gaps (the `lorien-float` extension in this repo).
-- `Super+H`: the window goes onto that floating "stage"; pressed again, a smaller window in the middle (60 % × 70 %). Works on maximized windows too.
+- `Super+H`: the window goes onto that floating "stage"; pressed again, a smaller window in the middle (60 % × 70 %). Works on maximized windows too. On a monitor without GNOME's top bar the stage starts below the Isle island.
 - `Super+F` maximizes (and back), `Super+Q` closes, `Super+Enter` opens Ghostty, `Super+E` a new Files window every time, `Super+Shift+S` a screenshot.
 - Window buttons on the right: minimize, maximize, close.
 
