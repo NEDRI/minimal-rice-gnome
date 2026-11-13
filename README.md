@@ -1,6 +1,6 @@
 # endri-lp-rice
 
-My desktop on a TUXEDO laptop with EndeavourOS: **GNOME 50/51**, near-black and minimal, with an island in the top bar, floating windows and a keyboard-first workflow. An older **KDE Plasma 6** version is kept further down.
+My desktop on a TUXEDO laptop with EndeavourOS: **GNOME 50/51**, near-black and minimal, with an island in the top bar, floating windows and a keyboard-first workflow. An older GNOME version is kept further down; the **KDE Plasma 6** look lives in its own repository, [minimal-rice-kde](https://github.com/NEDRI/minimal-rice-kde).
 
 ## The GNOME desktop (current)
 
@@ -51,46 +51,24 @@ Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. 
 
 **Login screen (GDM):** [`everforest/gdm-setup.sh`](everforest/gdm-setup.sh) gives it the dark look, 24 h clock, cursor and icons, without the distro logo (needs sudo). For the wallpaper, the black top bar and black login fields, use [GDM Settings](https://github.com/gdm-settings/gdm-settings) (`yay -S gdm-settings`): the installer fills in its settings, run [`gdm-theme/build.sh`](everforest/gdm-theme/build.sh), then open GDM Settings and press Apply.
 
-**Coming from KDE?** [`everforest/migrate/kde-to-gnome.sh`](everforest/migrate/kde-to-gnome.sh) installs GNOME and switches the login screen to GDM; after you log in to GNOME, [`remove-kde.sh`](everforest/migrate/remove-kde.sh) saves your KDE settings and removes Plasma.
+**Coming from KDE?** (For Plasma itself see [minimal-rice-kde](https://github.com/NEDRI/minimal-rice-kde).) [`everforest/migrate/kde-to-gnome.sh`](everforest/migrate/kde-to-gnome.sh) installs GNOME and switches the login screen to GDM; after you log in to GNOME, [`remove-kde.sh`](everforest/migrate/remove-kde.sh) saves your KDE settings and removes Plasma.
 
 **After updates of Kiwi Menu or Dynamic Music Pill** my changes to them are gone; run `python3 everforest/patches/kiwimenu/apply.py` or `python3 everforest/patches/dynamic-music-pill/apply.py`, then log in again.
 
 Names like `lorien-pills`, `lorien-float` and `~/lorien-backup-*` are the folders and IDs from the project's old name; they stay so that existing installs keep working.
 
-The rest of this README describes the earlier KDE Plasma and GNOME look (`./install.sh` in the repo root).
+The rest of this README describes the earlier GNOME look (`./install.sh` in the repo root).
 
-## What you get
+## What you get (earlier GNOME look)
 
-**KDE Plasma**
-- Transparent top bar with "islands" (Panel Colorizer): CPU, RAM, network, battery and an audio visualizer.
-- Island: [Isle](https://github.com/zickrian/isle)'s notch for KDE, following Isle's own code and fed by its background service `isled`. Closed, it hangs from the top edge of the screen with the time, the album art and dancing bars, or the focus timer's ring. Rest the pointer on it (or click) and it springs open into Isle's pages: Music (with synced lyrics and volume/outputs), Notifications (Plasma's history, Do Not Disturb), Focus, Reminders, Shelf (clipboard history via Klipper, and files to drag), Calendar, Apps (time per app) and Usage (Claude/Codex/Grok plan limits). Its alerts replace Plasma's OSD (volume, brightness, microphone, Caps Lock) and notification banners. The sparkle in its header, or `Super+I`, opens a chat with Claude Code (`claude -p`, no tools that change anything); needs Claude Code signed in.
-- Floating dock at the bottom.
-- Minimal desktop tiles in two columns along the screen edges:
-  - weather, binary clock, now playing, Pokémon of the day, terminals;
-  - system, network, battery, disks, updates, a note.
-- Hyprland-style window borders (KDE Rounded Corners) in the accent colour.
-- JetBrains Mono font, system24 colours, Qogir icons.
-- Shortcuts:
-  - `Super+Q` closes the window;
-  - `Super+Enter` opens Konsole;
-  - `Super+B` peeks at the desktop;
-  - `Super+D` opens the app launcher (rofi, as in Hyprland): apps, open windows and commands, Tab switches; `Super+D` or Esc closes it;
-  - `Super+Shift+S` takes a region screenshot;
-  - `Super+arrows` tile windows;
-  - `Super+H` floats the window in the middle of the screen with even gaps (again puts it back).
-
-**GNOME**
 - The bar extension (`lorien-bar`): a transparent top bar with black pills like the Isle island; when a menu is open, its button fills with the accent colour.
 - Isle (the island in the middle of the bar), Dash to Dock, ArcMenu, Vitals, Blur my Shell.
 - App folders in the app grid.
 - Smaller, dark title bars for Qt and Electron apps.
-- The same shortcuts as in KDE, plus `Super+E` to open Files.
-
-**Both**
+- Shortcuts: `Super+Q` closes the window, `Super+Enter` opens Konsole, `Super+E` opens Files, `Super+Shift+S` takes a region screenshot, `Super+arrows` tile windows.
 - Waywallen: Wallpaper Engine wallpapers on Wayland.
 - Accent from the wallpaper: it changes with the wallpaper, and without Wallpaper Engine it takes the colour from the regular wallpaper.
 - `updateall` updates everything: pacman and AUR, flatpak, firmware, rust, distrobox, oh-my-zsh, tldr. `updateall --check` only lists what is pending.
-- `ramka` rebuilds the window borders after a KDE update.
 
 ## Installation
 
@@ -103,36 +81,24 @@ cd minimal-rice
 The installer:
 1. Shows the package list and asks before installing (`packages.txt` and `packages-aur.txt`; installs `yay` if you don't have it).
 2. Saves a copy of your settings in `~/lorien-backup-<date>`.
-3. Asks for your city for the weather tile.
-4. Builds the window borders and the title bars; `sudo` will ask for your password.
-5. In a KDE session, asks before replacing your panels with the new layout.
+3. Builds the title bars; `sudo` will ask for your password.
+4. Applies the GNOME settings and the app folders.
 
 When it finishes, **log out and log back in**.
 
-Options:
-- `--kde` / `--gnome`: only one desktop.
-- `--city Krakow`: set the city without asking.
-- `--yes`: no questions.
-- `--no-packages`, `--no-build`, `--no-apply`: skip that step.
-
-If you install from GNOME and want KDE too, log in to Plasma later and run:
-
-```bash
-~/.local/share/lorien-rice/apply-kde.sh
-```
+Options: `--yes` (no questions), `--no-packages`, `--no-build`, `--no-apply` (skip that step).
 
 ## Wallpaper Engine wallpapers
 
-Waywallen uses the wallpapers from **your own** Steam library: you need a purchased copy of Wallpaper Engine and wallpapers downloaded from the Workshop. Open Waywallen from the system tray, point it to your Steam library and pick a wallpaper. In KDE, set the desktop wallpaper type to "Waywallen" (right-click the desktop → Configure Desktop and Wallpaper).
+Waywallen uses the wallpapers from **your own** Steam library: you need a purchased copy of Wallpaper Engine and wallpapers downloaded from the Workshop. Open Waywallen from the system tray, point it to your Steam library and pick a wallpaper.
 
 Without Wallpaper Engine everything works with a regular wallpaper, and the accent takes its colour from it.
 
 ## After updates
 
-- **After a KDE update** the window borders may disappear. Log out, log back in and run `ramka`.
 - **When `yay` updates `qadwaitadecorations-qt6`**, the GNOME title bars go back to the large size. Rebuild them:
   ```bash
-  ./install.sh --gnome --no-packages --no-apply
+  ./install.sh --no-packages --no-apply
   ```
 
 ## Uninstalling
@@ -145,9 +111,6 @@ Restores your settings from the newest `~/lorien-backup-*` copy and removes the 
 
 ## Credits
 
-- [mayanklad/cachyos-kde-pixel-rice](https://github.com/mayanklad/cachyos-kde-pixel-rice): Panel Colorizer presets, the starting point.
-- [refact0r/system24](https://github.com/refact0r/system24): colour palette.
-- [luisbocanegra](https://github.com/luisbocanegra): Panel Colorizer and Audio Visualizer.
-- [matinlotfali/KDE-Rounded-Corners](https://github.com/matinlotfali/KDE-Rounded-Corners), [zickrian/isle](https://github.com/zickrian/isle) (also the design the KDE island follows), [Waywallen](https://github.com/waywallen/waywallen), [QAdwaitaDecorations](https://github.com/FedoraQt/QAdwaitaDecorations), [pokemon-colorscripts](https://gitlab.com/phoneybadger/pokemon-colorscripts).
+- [zickrian/isle](https://github.com/zickrian/isle), [Waywallen](https://github.com/waywallen/waywallen), [QAdwaitaDecorations](https://github.com/FedoraQt/QAdwaitaDecorations).
 
 License: GPL-3.0-or-later (see `LICENSE`).

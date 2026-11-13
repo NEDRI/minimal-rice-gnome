@@ -2,10 +2,4 @@
 # your own copy of Wallpaper Engine.
 waywallen-bin
 waywallen-display
-plasma-wallpaper-waywallen
 gnome-shell-extension-waywallen
-plasma6-applets-panel-colorizer
-plasma6-applets-plasmusic-toolbar
-plasma6-applets-kara
-qogir-icon-theme
-pokemon-colorscripts-git

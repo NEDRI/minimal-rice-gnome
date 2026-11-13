@@ -9,27 +9,21 @@ echo "Restoring from: $BACKUP"
 read -rp "Continue? [Y/n] " a; [[ -z "$a" || "$a" =~ ^[Yy] ]] || exit 0
 
 L="$HOME/.local/share"
-rm -rf "$L/lorien-rice" "$L"/plasma/plasmoids/org.lorien.* "$L/plasma/desktoptheme/lorien" \
-       "$L/gnome-shell/extensions/lorien-bar@lorien-rice" "$HOME/.config/lorien-rice" \
+rm -rf "$L/lorien-rice" "$L/gnome-shell/extensions/lorien-bar@lorien-rice" "$HOME/.config/lorien-rice" \
        "$HOME/.config/autostart/lorien-accent.desktop" "$HOME/.config/autostart/waywallen.desktop" \
        "$HOME/.config/environment.d/20-lorien-decorations.conf" \
-       "$HOME/.local/bin/updateall" "$HOME/.local/bin/ramka" "$HOME/.local/bin/rmaka"
+       "$HOME/.local/bin/updateall"
 rm -f "$L"/konsole/{Update,btop,Cava,Lorien}.profile "$L/konsole/Lorien.colorscheme" \
       "$HOME"/.cache/lorien-accent-*
 
-# plasmashell saves its layout when it exits, so stop it while restoring
-plasma=false
-systemctl --user is-active -q plasma-plasmashell.service 2>/dev/null && plasma=true
-$plasma && systemctl --user stop plasma-plasmashell.service
 # files that existed before the install come back from the copy
 (cd "$BACKUP" && find . -type f ! -name dconf.ini ! -name components) | while read -r rel; do
     mkdir -p "$HOME/$(dirname "$rel")"
     cp -a "$BACKUP/$rel" "$HOME/$rel"
 done
-$plasma && systemctl --user start plasma-plasmashell.service
 if [[ -f "$BACKUP/dconf.ini" ]] && command -v dconf >/dev/null; then
     dconf reset -f /org/gnome/shell/extensions/
     dconf load / < "$BACKUP/dconf.ini"
 fi
-echo "Restored. Log out and log back in. The window borders (KDE Rounded Corners) and packages stay;"
+echo "Restored. Log out and log back in. Packages stay;"
 echo "remove them by hand, e.g.: sudo pacman -Rns qadwaitadecorations-qt6 waywallen-bin"

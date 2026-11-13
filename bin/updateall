@@ -77,7 +77,6 @@ for dev in json.load(sys.stdin).get("Devices", []):
     esac
 }
 
-before_kwin=$(pacman -Q kwin 2>/dev/null)
 before_kernel=$(pacman -Q linux 2>/dev/null)
 
 for step in "${selected[@]}"; do
@@ -94,8 +93,6 @@ for step in "${selected[@]}"; do printf '  %-10s %s\n' "$step" "${result[$step]}
 
 $check && exit 0
 notes=()
-[[ "$(pacman -Q kwin 2>/dev/null)" != "$before_kwin" ]] &&
-    notes+=("KWin was updated: log out and back in, then rebuild the window borders: ramka")
 [[ "$(pacman -Q linux 2>/dev/null)" != "$before_kernel" ]] &&
     notes+=("New Linux kernel: reboot.")
 orphans=$(pacman -Qdtq 2>/dev/null | wc -l)

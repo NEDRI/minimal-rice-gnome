@@ -7,11 +7,10 @@ The wallpaper is Waywallen's (Wallpaper Engine) when it runs, otherwise the desk
   accent-from-wallpaper.py --watch    keep running and re-apply whenever the wallpaper changes
   accent-from-wallpaper.py IMAGE      apply the accent of an image file (for testing)
 
-The colour goes to the KDE colour scheme (Plasma, panel pills, desktop tiles and their borders
-follow its highlight colour), the window border effect, the binary clock widget and the rofi launcher. In GNOME it
-sets the nearest of GNOME's accent colours and the exact colour on the dock's running-app dots.
+It sets the nearest of GNOME's accent colours and the exact colour on the dock's running-app dots.
+(The KDE Plasma look moved to minimal-rice-kde.)
 """
-import colorsys, configparser, math, os, sqlite3, subprocess, sys
+import colorsys, math, os, sqlite3, subprocess, sys
 from urllib.parse import unquote, urlparse
 from gi.repository import Gio, GLib
 from PIL import Image
@@ -20,9 +19,7 @@ BUS_NAME = "org.waywallen.waywallen.Daemon"
 OBJ = "/org/waywallen/waywallen/Daemon"
 IFACE = "org.waywallen.waywallen.Daemon1"
 DB = os.path.expanduser("~/.local/share/waywallen/waywallen-v2.db")
-# KDE and GNOME keep their own settings, so each session remembers what it last applied
-DESKTOP = "GNOME" if "GNOME" in os.environ.get("XDG_CURRENT_DESKTOP", "") else "KDE"
-STATE = os.path.expanduser(f"~/.cache/lorien-accent-{DESKTOP}")
+STATE = os.path.expanduser("~/.cache/lorien-accent-GNOME")
 # GNOME only offers these accent colours (hue in degrees), so it gets the nearest one
 GNOME_ACCENTS = {"red": 355, "orange": 25, "yellow": 45, "green": 140, "teal": 175,
                  "blue": 215, "purple": 275, "pink": 325}
@@ -57,24 +54,12 @@ def uri_path(uri):
 
 def static_wallpaper():
     """Path of the desktop's own wallpaper image (no Waywallen), or None."""
-    if DESKTOP == "GNOME":
-        key = "picture-uri-dark" if "dark" in subprocess.run(
-            ["gsettings", "get", "org.gnome.desktop.interface", "color-scheme"],
-            capture_output=True, text=True).stdout else "picture-uri"
-        uri = subprocess.run(["gsettings", "get", "org.gnome.desktop.background", key],
-                             capture_output=True, text=True).stdout.strip().strip("'")
-        path = uri_path(uri)
-    else:
-        rc = configparser.ConfigParser(interpolation=None, strict=False)
-        try:
-            rc.read(os.path.expanduser("~/.config/plasma-org.kde.plasma.desktop-appletsrc"))
-        except configparser.Error:
-            return None
-        path = None
-        for sec in rc.sections():
-            if sec.endswith("][Wallpaper][org.kde.image][General]") and rc[sec].get("Image"):
-                path = uri_path(rc[sec]["Image"])
-                break
+    key = "picture-uri-dark" if "dark" in subprocess.run(
+        ["gsettings", "get", "org.gnome.desktop.interface", "color-scheme"],
+        capture_output=True, text=True).stdout else "picture-uri"
+    uri = subprocess.run(["gsettings", "get", "org.gnome.desktop.background", key],
+                         capture_output=True, text=True).stdout.strip().strip("'")
+    path = uri_path(uri)
     if path and os.path.isdir(path):  # a wallpaper package: take its largest image
         imgs = [os.path.join(d, f) for d, _, fs in os.walk(path) for f in fs
                 if f.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))]
@@ -118,11 +103,7 @@ def apply(rgb):
             return
     except OSError:
         pass
-    (apply_gnome if DESKTOP == "GNOME" else apply_kde)(rgb, hexc)
-    # the rofi launcher (Super+D) reads the accent from here each time it opens
-    rofi = os.path.expanduser("~/.config/rofi/lorien-accent.rasi")
-    os.makedirs(os.path.dirname(rofi), exist_ok=True)
-    open(rofi, "w").write("* { accent: %s; }\n" % hexc)
+    apply_gnome(rgb, hexc)
     os.makedirs(os.path.dirname(STATE), exist_ok=True)
     open(STATE, "w").write(hexc + "\n")
     print("accent", hexc)
@@ -139,28 +120,6 @@ def apply_gnome(rgb, hexc):
                     "'%s'" % hexc])
 
 
-def apply_kde(rgb, hexc):
-    csv = "%d,%d,%d" % rgb
-    subprocess.run(["plasma-apply-colorscheme", "--accent-color", hexc], stdout=subprocess.DEVNULL)
-    # plasmashell doesn't always repaint after that; a "palette changed" broadcast makes it
-    subprocess.run(["dbus-send", "--session", "--type=signal", "/KGlobalSettings",
-                    "org.kde.KGlobalSettings.notifyChange", "int32:0", "int32:0"])
-    for key in ("OutlineColor", "InactiveOutlineColor"):
-        subprocess.run(["kwriteconfig6", "--file", "kwinrc", "--group", "Round-Corners", "--key", key, csv])
-    subprocess.run(["qdbus6", "org.kde.KWin", "/Effects", "org.kde.kwin.Effects.reconfigureEffect",
-                    "kwin4_effect_shapecorners"], stdout=subprocess.DEVNULL)
-    script = ('desktops().forEach(function (d) { d.widgets("org.kde.plasma.binaryclock").forEach(function (w) {'
-              ' w.currentConfigGroup = ["General"]; w.writeConfig("customColorForActive", "%s"); w.reloadConfig(); }); });' % hexc)
-    subprocess.run(["qdbus6", "org.kde.plasmashell", "/PlasmaShell", "org.kde.PlasmaShell.evaluateScript", script],
-                   stdout=subprocess.DEVNULL)
-    # the panel's audio visualizer doesn't repaint when the system colours change, so give it the
-    # accent as a custom colour (sourceType 0)
-    script = ('panels().forEach(function (p) { p.widgets("luisbocanegra.audio.visualizer").forEach(function (w) {'
-              ' w.currentConfigGroup = ["General"]; var c = JSON.parse(w.readConfig("barColors") || "{}");'
-              ' c.enabled = true; c.sourceType = 0; c.custom = "%s";'
-              ' w.writeConfig("barColors", JSON.stringify(c)); w.reloadConfig(); }); });' % hexc)
-    subprocess.run(["qdbus6", "org.kde.plasmashell", "/PlasmaShell", "org.kde.PlasmaShell.evaluateScript", script],
-                   stdout=subprocess.DEVNULL)
 
 
 _last_image = None
