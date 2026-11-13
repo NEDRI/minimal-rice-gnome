@@ -7,8 +7,8 @@ My desktop on a TUXEDO laptop with EndeavourOS: **GNOME 50/51**, near-black and 
 Everything in [`everforest/`](everforest/), installed by one script from a GNOME session:
 
 ```bash
-git clone https://github.com/NEDRI/minimal-rice.git
-cd minimal-rice/everforest
+git clone https://github.com/NEDRI/minimal-rice-gnome.git
+cd minimal-rice-gnome/everforest
 ./install.sh
 ```
 
@@ -73,8 +73,8 @@ The rest of this README describes the earlier GNOME look (`./install.sh` in the 
 ## Installation
 
 ```bash
-git clone https://github.com/NEDRI/minimal-rice.git
-cd minimal-rice
+git clone https://github.com/NEDRI/minimal-rice-gnome.git
+cd minimal-rice-gnome
 ./install.sh
 ```
 
