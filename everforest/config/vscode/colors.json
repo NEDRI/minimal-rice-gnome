@@ -169,7 +169,7 @@
             }
         }
     },
-    "editor.fontFamily": "'Cascadia Code', 'JetBrainsMono Nerd Font', monospace",
-    "editor.fontLigatures": "'calt', 'ss01'",
-    "terminal.integrated.fontFamily": "'Cascadia Code', 'JetBrainsMono Nerd Font'"
+    "editor.fontFamily": "'Geist Mono', 'JetBrainsMono Nerd Font', monospace",
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontFamily": "'Geist Mono', 'JetBrainsMono Nerd Font'"
 }

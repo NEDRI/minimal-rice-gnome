@@ -80,11 +80,11 @@ fi
 say "Homenaje (the desktop clock font)"
 mkdir -p "$L/fonts"
 curl -sfL https://raw.githubusercontent.com/google/fonts/main/ofl/homenaje/Homenaje-Regular.ttf -o "$L/fonts/Homenaje-Regular.ttf"
-say "Cascadia Code (the VS Code font)"
-mkdir -p "$L/fonts/CascadiaCode"
-B=https://raw.githubusercontent.com/google/fonts/main/ofl/cascadiacode
-curl -sfL "$B/CascadiaCode%5Bwght%5D.ttf" -o "$L/fonts/CascadiaCode/CascadiaCode[wght].ttf" || true
-curl -sfL "$B/CascadiaCode-Italic%5Bwght%5D.ttf" -o "$L/fonts/CascadiaCode/CascadiaCode-Italic[wght].ttf" || true
+say "Geist Mono (the VS Code font)"
+mkdir -p "$L/fonts/GeistMono"
+B=https://raw.githubusercontent.com/google/fonts/main/ofl/geistmono
+curl -sfL "$B/GeistMono%5Bwght%5D.ttf" -o "$L/fonts/GeistMono/GeistMono[wght].ttf" || true
+curl -sfL "$B/GeistMono-Italic%5Bwght%5D.ttf" -o "$L/fonts/GeistMono/GeistMono-Italic[wght].ttf" || true
 fc-cache -f "$L/fonts" >/dev/null
 
 # ---- 4. GNOME extensions ----
@@ -174,7 +174,7 @@ if [ -d "$V" ]; then
     cp "$HERE/config/vesktop/quickCss.css" "$V/quickCss.css"
     python3 -c 'import json,sys;p=sys.argv[1];d=json.load(open(p));d["useQuickCss"]=True;json.dump(d,open(p,"w"),indent=4)' "$V/settings.json" || true
 fi
-C="$HOME/.config/Code/User/settings.json"   # VS Code: near-black backgrounds, brighter syntax colours, Cascadia Code
+C="$HOME/.config/Code/User/settings.json"   # VS Code: near-black backgrounds, brighter syntax colours, Geist Mono
 if [ -f "$C" ]; then
     cp -a "$C" "$BACKUP/vscode-settings.json"
     python3 -c 'import json,sys;p,c=sys.argv[1:];d=json.load(open(p));d.update(json.load(open(c)));json.dump(d,open(p,"w"),indent=4)' "$C" "$HERE/config/vscode/colors.json" || echo "  ! VS Code settings.json has comments; add config/vscode/colors.json by hand"
