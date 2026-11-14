@@ -68,10 +68,15 @@ for v in 3.0 4.0; do
     [ -e "$HOME/.config/gtk-$v/gtk.css" ] && cp -a "$HOME/.config/gtk-$v/gtk.css" "$BACKUP/gtk-$v.css"
     cp "$HERE/config/gtk/gtk.css" "$HOME/.config/gtk-$v/gtk.css"
 done
-say "Bibata Modern Ice cursor"
+say "Qogir Dark cursor"
 mkdir -p "$L/icons"
-curl -sfL https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.7/Bibata-Modern-Ice.tar.xz -o "$T/bibata.tar.xz"
-tar -xf "$T/bibata.tar.xz" -C "$L/icons"
+if [ ! -d /usr/share/icons/Qogir-Dark/cursors ]; then   # EndeavourOS ships it (eos-qogir-icons); elsewhere take it from upstream
+    curl -sfL https://github.com/vinceliuice/Qogir-icon-theme/archive/refs/heads/master.tar.gz -o "$T/qogir.tar.gz"
+    tar -xzf "$T/qogir.tar.gz" -C "$T" Qogir-icon-theme-master/src/cursors/dist-Dark
+    rm -rf "$L/icons/Qogir-Dark"
+    cp -a "$T/Qogir-icon-theme-master/src/cursors/dist-Dark" "$L/icons/Qogir-Dark"
+    sed -i 's/^Name=.*/Name=Qogir-Dark/' "$L/icons/Qogir-Dark/index.theme"
+fi
 say "Homenaje (the desktop clock font)"
 mkdir -p "$L/fonts"
 curl -sfL https://raw.githubusercontent.com/google/fonts/main/ofl/homenaje/Homenaje-Regular.ttf -o "$L/fonts/Homenaje-Regular.ttf"

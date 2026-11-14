@@ -16,7 +16,7 @@ Then log out and log back in. Options: `--no-packages`, `--no-themes`, `--yes`. 
 
 **Look**
 - Near-black windows: libadwaita and [adw-gtk3](https://github.com/lassekongo83/adw-gtk3) (for GTK3 apps) with darker colours from [`config/gtk/gtk.css`](everforest/config/gtk/gtk.css); the default GNOME Shell theme.
-- [Reversal](https://github.com/yeyushengfan258/Reversal-icon-theme) icons (black variant), [Bibata Modern Ice](https://github.com/ful1e5/Bibata_Cursor) cursor, JetBrains Mono Nerd Font.
+- [Reversal](https://github.com/yeyushengfan258/Reversal-icon-theme) icons (black variant), [Qogir Dark](https://github.com/vinceliuice/Qogir-icon-theme) cursor, JetBrains Mono Nerd Font.
 - Windows slightly see-through over a blurred wallpaper (Blur my Shell, static blur so it does not flicker); Ghostty, Firefox, players and Steam stay opaque.
 - Wallpapers: nine from [everforest-walls](https://github.com/Apeiros-46B/everforest-walls) in `~/Pictures/Wallpapers/everforest` and eight from Wallhaven in `~/Pictures/Wallpapers/wallhaven`; the desktop uses GNOME's own dark "Tubes"; every wallpaper on the computer shows up in Settings → Appearance ([`wallpapers-list.py`](everforest/wallpapers-list.py)).
 
